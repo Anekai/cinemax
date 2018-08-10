@@ -1,7 +1,5 @@
 package entities;
 
-import types.SituacaoType;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;

@@ -1,42 +1,42 @@
+
 package services;
 
-import daos.ProdutoDAO;
-import entities.Produto;
+import daos.FilmeDAO;
+import entities.Filme;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Service
 @Transactional
-public class ProdutoService {
- 
+public class FilmeService {
+    
     @Autowired
-    ProdutoDAO dao;
+    FilmeDAO dao;
 
-    public void insert(Produto entity) {
+    public void insert(Filme entity) {
         dao.insert(entity);
     }
 
-    public void update(Produto entity) {
+    public void update(Filme entity) {
         dao.update(entity);
     }
 
-    public void delete(Produto entity) {
+    public void delete(Filme entity) {
         dao.delete(entity);
     }
     
-    public Produto findById(Integer id) {
+    public Filme findById(Integer id) {
         return dao.findById(id);
     }
 
-    public List<Produto> find() {
-        return dao.find(new Produto());
+    public List<Filme> find() {
+        return dao.find(new Filme());
     }
     
-    public List<Produto> find(Produto entity) {
+    public List<Filme> find(Filme entity) {
         return dao.find(entity);
     }
-
+    
 }

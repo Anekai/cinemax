@@ -1,45 +1,45 @@
+
 package daos;
 
-import entities.Produto;
-import org.hibernate.Session;
-import org.hibernate.criterion.Example;
-import org.springframework.stereotype.Repository;
-
+import entities.Filme;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
 
 @Repository
-public class ProdutoDAO {
- 
+public class FilmeDAO {
+    
     @PersistenceContext
     private EntityManager em;
 
-    public void insert(Produto entity) {
+    public void insert(Filme entity) {
         em.persist(entity);
     }
 
-    public void update(Produto entity) {
+    public void update(Filme entity) {
         em.merge(entity);
     }
 
-    public void delete(Produto entity) {
+    public void delete(Filme entity) {
         em.remove(entity);
     }
     
-    public Produto findById(Integer id) {
-        Criteria criteria = ((Session)em.getDelegate()).createCriteria(Produto.class);
+    public Filme findById(Integer id) {
+        Criteria criteria = ((Session)em.getDelegate()).createCriteria(Filme.class);
         
         criteria.add(Restrictions.eq("id", id));
         
-        return (Produto)criteria.uniqueResult();
+        return (Filme)criteria.uniqueResult();
     }
     
-    public List<Produto> find(Produto entity) {
-        Criteria criteria = ((Session)em.getDelegate()).createCriteria(Produto.class);
+    public List<Filme> find(Filme entity) {
+        Criteria criteria = ((Session)em.getDelegate()).createCriteria(Filme.class);
         
         criteria.add(Example.create(entity));
         
@@ -51,5 +51,5 @@ public class ProdutoDAO {
         
         return criteria.list();
     }
-
+    
 }
