@@ -9,7 +9,7 @@ import entities.Funcionario;
 import configuration.SpringConfig;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import services.UsuarioService;
+import services.FuncionarioService;
 
 /**
  *
@@ -21,7 +21,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
     public TelaLogin() {
         initComponents();
-        SpringConfig.context.getBean(UsuarioService.class).find();
+        SpringConfig.context.getBean(FuncionarioService.class).find();
         this.setLocationRelativeTo(null);
     }
     
@@ -126,7 +126,7 @@ public class TelaLogin extends javax.swing.JFrame {
             labelLoginErro.setText("Informe login e senha");
             labelLoginErro.setVisible(true);
         } else {
-            UsuarioService usuarioService = SpringConfig.context.getBean(UsuarioService.class);
+            FuncionarioService usuarioService = SpringConfig.context.getBean(FuncionarioService.class);
             String senha = new String(fieldSenha.getPassword());
             try {
                 // Create MessageDigest instance for MD5
