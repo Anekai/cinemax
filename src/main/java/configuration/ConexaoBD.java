@@ -13,7 +13,7 @@ public class ConexaoBD {
             // Carrega Driver do Banco de Dados
             Class.forName("org.postgresql.Driver");
 
-            conexao = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cinemax", "postgres", "postgres");
+            conexao = DriverManager.getConnection("jdbc:postgresql://localhost:5432/cinemax", "postgres", "kacria");
         } catch (Exception e) {
             System.err.println(e);
         }

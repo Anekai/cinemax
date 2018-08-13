@@ -40,8 +40,8 @@ public class SpringConfig {
             settings.put(Environment.DRIVER, "org.postgresql.Driver");
             settings.put(Environment.URL, "jdbc:postgresql://localhost:5432/cinemax");
             settings.put(Environment.USER, "postgres");
-            settings.put(Environment.PASS, "postgres");
-            settings.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQL94Dialect");
+            settings.put(Environment.PASS, "kacria");
+            settings.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQLDialect");
             settings.put(Environment.AUTO_CLOSE_SESSION, "true");
             settings.put(Environment.AUTOCOMMIT, "true");
             settings.put(Environment.SHOW_SQL, "true");

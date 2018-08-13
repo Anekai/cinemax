@@ -119,6 +119,8 @@ public class TelaInicial extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCadastro = new javax.swing.JMenu();
         menuItemProduto = new javax.swing.JMenuItem();
+        menuItemGenero = new javax.swing.JMenuItem();
+        menuItemDiretor = new javax.swing.JMenuItem();
         menuItemTipoProduto = new javax.swing.JMenuItem();
         menuItemCliente = new javax.swing.JMenuItem();
         menuItemSaldo = new javax.swing.JMenuItem();
@@ -488,6 +490,24 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         menuCadastro.add(menuItemProduto);
 
+        menuItemGenero.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.ALT_MASK));
+        menuItemGenero.setText("Gêneros");
+        menuItemGenero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemGeneroActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(menuItemGenero);
+
+        menuItemDiretor.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.ALT_MASK));
+        menuItemDiretor.setText("Diretores");
+        menuItemDiretor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemDiretorActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(menuItemDiretor);
+
         menuItemTipoProduto.setText("Tipos de Produtos");
         menuItemTipoProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -707,6 +727,22 @@ public class TelaInicial extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_menuItemEncomendaActionPerformed
 
+    private void menuItemGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemGeneroActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TelaGenero(new TelaInicial(), true).setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_menuItemGeneroActionPerformed
+
+    private void menuItemDiretorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemDiretorActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TelaDiretor(new TelaInicial(), true).setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_menuItemDiretorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -801,7 +837,9 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JLabel labelVendaMessage;
     private javax.swing.JMenu menuCadastro;
     private javax.swing.JMenuItem menuItemCliente;
+    private javax.swing.JMenuItem menuItemDiretor;
     private javax.swing.JMenuItem menuItemEncomenda;
+    private javax.swing.JMenuItem menuItemGenero;
     private javax.swing.JMenuItem menuItemProduto;
     private javax.swing.JMenuItem menuItemSaldo;
     private javax.swing.JMenuItem menuItemTipoProduto;
