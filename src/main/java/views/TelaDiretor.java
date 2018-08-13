@@ -55,7 +55,6 @@ public class TelaDiretor extends javax.swing.JDialog {
         for ( Diretor diretor : list ) {
             rowData[0] = diretor.getId();
             rowData[1] = diretor.getNome();
-            rowData[2] = diretor.getNome();
 
             model.addRow(rowData);
         }
@@ -203,7 +202,7 @@ public class TelaDiretor extends javax.swing.JDialog {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cadastro de Produtos");
+        setTitle("Cadastro de Diretores");
 
         buttonEditar.setText("Editar");
         buttonEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -221,14 +220,14 @@ public class TelaDiretor extends javax.swing.JDialog {
 
             },
             new String [] {
-                "ID", "Nome", "Preço", "Tipo Produto", "Situação"
+                "ID", "Nome", "Situação"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -246,15 +245,9 @@ public class TelaDiretor extends javax.swing.JDialog {
             tabelDiretor.getColumnModel().getColumn(0).setPreferredWidth(50);
             tabelDiretor.getColumnModel().getColumn(0).setMaxWidth(50);
             tabelDiretor.getColumnModel().getColumn(1).setResizable(false);
-            tabelDiretor.getColumnModel().getColumn(2).setMinWidth(60);
-            tabelDiretor.getColumnModel().getColumn(2).setPreferredWidth(60);
-            tabelDiretor.getColumnModel().getColumn(2).setMaxWidth(60);
-            tabelDiretor.getColumnModel().getColumn(3).setMinWidth(100);
-            tabelDiretor.getColumnModel().getColumn(3).setPreferredWidth(100);
-            tabelDiretor.getColumnModel().getColumn(3).setMaxWidth(100);
-            tabelDiretor.getColumnModel().getColumn(4).setMinWidth(80);
-            tabelDiretor.getColumnModel().getColumn(4).setPreferredWidth(80);
-            tabelDiretor.getColumnModel().getColumn(4).setMaxWidth(80);
+            tabelDiretor.getColumnModel().getColumn(2).setMinWidth(80);
+            tabelDiretor.getColumnModel().getColumn(2).setPreferredWidth(80);
+            tabelDiretor.getColumnModel().getColumn(2).setMaxWidth(80);
         }
 
         buttonPesquisar.setText("Pesquisar");

@@ -229,7 +229,7 @@ public class TelaGenero extends javax.swing.JDialog {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cadastro de Produtos");
+        setTitle("Cadastro de Generos");
 
         buttonEditar.setText("Editar");
         buttonEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -247,14 +247,14 @@ public class TelaGenero extends javax.swing.JDialog {
 
             },
             new String [] {
-                "ID", "Nome", "Preço", "Tipo Produto", "Situação"
+                "ID", "Nome", "Descrição", "Situação"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, true, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -272,15 +272,9 @@ public class TelaGenero extends javax.swing.JDialog {
             tabelGenero.getColumnModel().getColumn(0).setPreferredWidth(50);
             tabelGenero.getColumnModel().getColumn(0).setMaxWidth(50);
             tabelGenero.getColumnModel().getColumn(1).setResizable(false);
-            tabelGenero.getColumnModel().getColumn(2).setMinWidth(60);
-            tabelGenero.getColumnModel().getColumn(2).setPreferredWidth(60);
-            tabelGenero.getColumnModel().getColumn(2).setMaxWidth(60);
-            tabelGenero.getColumnModel().getColumn(3).setMinWidth(100);
-            tabelGenero.getColumnModel().getColumn(3).setPreferredWidth(100);
-            tabelGenero.getColumnModel().getColumn(3).setMaxWidth(100);
-            tabelGenero.getColumnModel().getColumn(4).setMinWidth(80);
-            tabelGenero.getColumnModel().getColumn(4).setPreferredWidth(80);
-            tabelGenero.getColumnModel().getColumn(4).setMaxWidth(80);
+            tabelGenero.getColumnModel().getColumn(3).setMinWidth(80);
+            tabelGenero.getColumnModel().getColumn(3).setPreferredWidth(80);
+            tabelGenero.getColumnModel().getColumn(3).setMaxWidth(80);
         }
 
         buttonPesquisar.setText("Pesquisar");
