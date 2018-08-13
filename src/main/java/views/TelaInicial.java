@@ -508,7 +508,8 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         menuCadastro.add(menuItemDiretor);
 
-        menuItemTipoProduto.setText("Tipos de Produtos");
+        menuItemTipoProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
+        menuItemTipoProduto.setText("Cargos");
         menuItemTipoProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuItemTipoProdutoActionPerformed(evt);
@@ -631,7 +632,7 @@ public class TelaInicial extends javax.swing.JFrame {
     private void menuItemTipoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemTipoProdutoActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+                new TelaCargo(new TelaInicial(), true).setVisible(true);
             }
         });
     }//GEN-LAST:event_menuItemTipoProdutoActionPerformed
