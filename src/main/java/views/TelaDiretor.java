@@ -9,12 +9,15 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import services.DiretorService;
 import services.ProdutoService;
+import types.SimNaoType;
 import types.SituacaoType;
 
 public class TelaDiretor extends javax.swing.JDialog {
 
     private Diretor entitySearch;
     private Diretor entity;
+    private List<SimNaoType> tiposProdutos;
+
     
     public TelaDiretor(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -23,8 +26,13 @@ public class TelaDiretor extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         
         entitySearch = new Diretor();
-                
-//        loadTiposDiretores();
+        
+        comboSearchAtivo.removeAllItems();
+        comboSearchAtivo.addItem("");
+        
+        for ( SimNaoType simNao : SimNaoType.values() ) {
+            comboSearchAtivo.addItem(simNao.getValue());
+        }
         
     }
     
@@ -39,8 +47,13 @@ public class TelaDiretor extends javax.swing.JDialog {
             entitySearch.setNome(fieldSearchNome.getText());
         }
         
+        if (comboSearchAtivo.getSelectedIndex() != 0) {
+            entitySearch.setAtivo(Arrays.asList(SimNaoType.values()).get(comboSearchAtivo.getSelectedIndex()-1));
+        }   
         
         populateTable(service.find(entitySearch));
+        
+        entitySearch = new Diretor();
     }
     
     private void loadTiposProdutos() {
@@ -49,12 +62,13 @@ public class TelaDiretor extends javax.swing.JDialog {
     
     private void populateTable(List<Diretor> list) {
         DefaultTableModel model = (DefaultTableModel) tabelDiretor.getModel();
-        Object rowData[] = new Object[5];
+        Object rowData[] = new Object[3];
         model.setRowCount(0);
         
         for ( Diretor diretor : list ) {
             rowData[0] = diretor.getId();
             rowData[1] = diretor.getNome();
+            rowData[2] = diretor.getAtivo().getValue();
 
             model.addRow(rowData);
         }
@@ -80,7 +94,7 @@ public class TelaDiretor extends javax.swing.JDialog {
         fieldUpdateId = new javax.swing.JTextField();
         buttonUpdateSalvar = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        comboUpdateSituacao = new javax.swing.JComboBox<>();
+        comboUpdateAtivo = new javax.swing.JComboBox<>();
         buttonEditar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -90,6 +104,8 @@ public class TelaDiretor extends javax.swing.JDialog {
         fieldSearchNome = new javax.swing.JTextField();
         buttonPesquisar = new javax.swing.JButton();
         buttonNovo = new javax.swing.JButton();
+        comboSearchAtivo = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
 
         dialogInsert.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         dialogInsert.setTitle("Cadastrar Produto");
@@ -170,7 +186,7 @@ public class TelaDiretor extends javax.swing.JDialog {
                                 .addComponent(jLabel12)
                                 .addGap(45, 45, 45)
                                 .addGroup(dialogUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(comboUpdateSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(comboUpdateAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(fieldUpdateNome, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(fieldUpdateId, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(buttonUpdateSalvar))
@@ -195,7 +211,7 @@ public class TelaDiretor extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(dialogUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(comboUpdateSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboUpdateAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(buttonUpdateSalvar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -264,6 +280,8 @@ public class TelaDiretor extends javax.swing.JDialog {
             }
         });
 
+        jLabel3.setText("Ativo:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -277,15 +295,17 @@ public class TelaDiretor extends javax.swing.JDialog {
                         .addComponent(buttonNovo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonEditar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(45, 45, 45)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(fieldSearchNome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fieldSearchId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(fieldSearchId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboSearchAtivo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -299,14 +319,18 @@ public class TelaDiretor extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(fieldSearchNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(comboSearchAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonPesquisar)
                     .addComponent(buttonNovo)
                     .addComponent(buttonEditar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -323,7 +347,13 @@ public class TelaDiretor extends javax.swing.JDialog {
                 fieldUpdateId.setText(String.valueOf(entity.getId()));
                 fieldUpdateNome.setText(entity.getNome());
                              
-                comboUpdateSituacao.removeAllItems();
+                comboUpdateAtivo.removeAllItems();
+                
+                for ( SimNaoType simNao : SimNaoType.values() ) {
+                    comboUpdateAtivo.addItem(simNao.getValue());
+                }
+                
+                comboUpdateAtivo.setSelectedIndex(Arrays.asList(SimNaoType.values()).indexOf(entity.getAtivo()));
                 
                 dialogUpdate.setLocationRelativeTo(null);
                 dialogUpdate.setVisible(true);
@@ -352,6 +382,7 @@ public class TelaDiretor extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 entity.setNome(fieldInsertNome.getText());
+                entity.setAtivo(SimNaoType.SIM);
 
                 DiretorService service = SpringConfig.context.getBean(DiretorService.class);
 
@@ -369,6 +400,7 @@ public class TelaDiretor extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 entity.setNome(fieldUpdateNome.getText());
+                entity.setAtivo(Arrays.asList(SimNaoType.values()).get(comboUpdateAtivo.getSelectedIndex()));
 
                 DiretorService service = SpringConfig.context.getBean(DiretorService.class);
 
@@ -437,7 +469,8 @@ public class TelaDiretor extends javax.swing.JDialog {
     private javax.swing.JButton buttonNovo;
     private javax.swing.JButton buttonPesquisar;
     private javax.swing.JButton buttonUpdateSalvar;
-    private javax.swing.JComboBox<String> comboUpdateSituacao;
+    private javax.swing.JComboBox<String> comboSearchAtivo;
+    private javax.swing.JComboBox<String> comboUpdateAtivo;
     private javax.swing.JDialog dialogInsert;
     private javax.swing.JDialog dialogUpdate;
     private javax.swing.JTextField fieldInsertNome;
@@ -448,6 +481,7 @@ public class TelaDiretor extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
