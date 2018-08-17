@@ -9,6 +9,7 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import services.GeneroService;
 import services.ProdutoService;
+import types.SimNaoType;
 import types.SituacaoType;
 
 public class TelaGenero extends javax.swing.JDialog {
@@ -23,6 +24,13 @@ public class TelaGenero extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         
         entitySearch = new Genero();
+        
+        comboSearchAtivo.removeAllItems();
+        comboSearchAtivo.addItem("");
+        
+        for ( SimNaoType simNao : SimNaoType.values() ) {
+            comboSearchAtivo.addItem(simNao.getValue());
+        }
                
         loadTiposGeneros();        
     }
@@ -38,12 +46,13 @@ public class TelaGenero extends javax.swing.JDialog {
             entitySearch.setNome(fieldSearchNome.getText());
         }
         
-//        if (!fieldSearchdDescricao.getText().equals("")) {
-//            entitySearch.setNome(fieldSearchdDescricao.getText());
-//        }
-        
+        if (comboSearchAtivo.getSelectedIndex() != 0) {
+            entitySearch.setAtivo(Arrays.asList(SimNaoType.values()).get(comboSearchAtivo.getSelectedIndex()-1));
+        }   
         
         populateTable(service.find(entitySearch));
+        
+        entitySearch = new Genero();
     }
     
     private void loadTiposGeneros() {
@@ -51,14 +60,14 @@ public class TelaGenero extends javax.swing.JDialog {
     }
     
     private void populateTable(List<Genero> list) {
-        DefaultTableModel model = (DefaultTableModel) tabelGenero.getModel();
-        Object rowData[] = new Object[5];
+        DefaultTableModel model = (DefaultTableModel) tableGenero.getModel();
+        Object rowData[] = new Object[3];
         model.setRowCount(0);
         
         for ( Genero genero : list ) {
             rowData[0] = genero.getId();
             rowData[1] = genero.getNome();
-            rowData[2] = genero.getDescricao();
+            rowData[2] = genero.getAtivo().getValue();
 
             model.addRow(rowData);
         }
@@ -88,18 +97,18 @@ public class TelaGenero extends javax.swing.JDialog {
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         fieldUpdateDescricao = new javax.swing.JTextField();
-        comboUpdateSituacao = new javax.swing.JComboBox<>();
+        comboUpdateAtivo = new javax.swing.JComboBox<>();
         buttonEditar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelGenero = new javax.swing.JTable();
+        tableGenero = new javax.swing.JTable();
         fieldSearchId = new javax.swing.JTextField();
         fieldSearchNome = new javax.swing.JTextField();
         buttonPesquisar = new javax.swing.JButton();
         buttonNovo = new javax.swing.JButton();
-        fieldSearchDescricao = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        comboSearchAtivo = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
 
         dialogInsert.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         dialogInsert.setTitle("Cadastrar Produto");
@@ -191,7 +200,7 @@ public class TelaGenero extends javax.swing.JDialog {
                                 .addComponent(jLabel12)
                                 .addGap(45, 45, 45)
                                 .addGroup(dialogUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(comboUpdateSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(comboUpdateAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(fieldUpdateDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(fieldUpdateNome, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(fieldUpdateId, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -222,7 +231,7 @@ public class TelaGenero extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(dialogUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(comboUpdateSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboUpdateAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(buttonUpdateSalvar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -242,19 +251,19 @@ public class TelaGenero extends javax.swing.JDialog {
 
         jLabel2.setText("Nome:");
 
-        tabelGenero.setModel(new javax.swing.table.DefaultTableModel(
+        tableGenero.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Nome", "Descrição", "Situação"
+                "ID", "Nome", "Situação"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -265,16 +274,16 @@ public class TelaGenero extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        tabelGenero.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tabelGenero);
-        if (tabelGenero.getColumnModel().getColumnCount() > 0) {
-            tabelGenero.getColumnModel().getColumn(0).setMinWidth(50);
-            tabelGenero.getColumnModel().getColumn(0).setPreferredWidth(50);
-            tabelGenero.getColumnModel().getColumn(0).setMaxWidth(50);
-            tabelGenero.getColumnModel().getColumn(1).setResizable(false);
-            tabelGenero.getColumnModel().getColumn(3).setMinWidth(80);
-            tabelGenero.getColumnModel().getColumn(3).setPreferredWidth(80);
-            tabelGenero.getColumnModel().getColumn(3).setMaxWidth(80);
+        tableGenero.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tableGenero);
+        if (tableGenero.getColumnModel().getColumnCount() > 0) {
+            tableGenero.getColumnModel().getColumn(0).setMinWidth(50);
+            tableGenero.getColumnModel().getColumn(0).setPreferredWidth(50);
+            tableGenero.getColumnModel().getColumn(0).setMaxWidth(50);
+            tableGenero.getColumnModel().getColumn(1).setResizable(false);
+            tableGenero.getColumnModel().getColumn(2).setMinWidth(80);
+            tableGenero.getColumnModel().getColumn(2).setPreferredWidth(80);
+            tableGenero.getColumnModel().getColumn(2).setMaxWidth(80);
         }
 
         buttonPesquisar.setText("Pesquisar");
@@ -291,7 +300,7 @@ public class TelaGenero extends javax.swing.JDialog {
             }
         });
 
-        jLabel8.setText("Descrição");
+        jLabel3.setText("Ativo:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -313,16 +322,14 @@ public class TelaGenero extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fieldSearchNome, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fieldSearchId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(fieldSearchDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(43, 43, 43)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(fieldSearchNome, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fieldSearchId, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboSearchAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,17 +341,19 @@ public class TelaGenero extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(fieldSearchNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldSearchDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addGap(18, 18, 18)
+                    .addComponent(fieldSearchNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboSearchAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonPesquisar)
                     .addComponent(buttonNovo)
                     .addComponent(buttonEditar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -354,7 +363,7 @@ public class TelaGenero extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 entity = new Genero();
-                entity.setId((Integer) tabelGenero.getValueAt(tabelGenero.getSelectedRow(), 0));
+                entity.setId((Integer) tableGenero.getValueAt(tableGenero.getSelectedRow(), 0));
 
                 entity = SpringConfig.context.getBean(GeneroService.class).find(entity).get(0);
 
@@ -362,12 +371,13 @@ public class TelaGenero extends javax.swing.JDialog {
                 fieldUpdateNome.setText(entity.getNome());
                 fieldUpdateDescricao.setText(entity.getDescricao());
                 
-                loadTiposGeneros();
+                comboUpdateAtivo.removeAllItems();
                 
-//                comboUpdateTipoProduto.removeAllItems();
-                comboUpdateSituacao.removeAllItems();
+                for ( SimNaoType simNao : SimNaoType.values() ) {
+                    comboUpdateAtivo.addItem(simNao.getValue());
+                }
                 
-
+                comboUpdateAtivo.setSelectedIndex(Arrays.asList(SimNaoType.values()).indexOf(entity.getAtivo()));
 
                 dialogUpdate.setLocationRelativeTo(null);
                 dialogUpdate.setVisible(true);
@@ -385,6 +395,7 @@ public class TelaGenero extends javax.swing.JDialog {
                 entity = new Genero();
 
                 fieldInsertNome.setText("");
+                fieldInsertDescricao.setText("");
                 
                 loadTiposGeneros();
                 
@@ -401,7 +412,7 @@ public class TelaGenero extends javax.swing.JDialog {
             public void run() {
                 entity.setNome(fieldInsertNome.getText());
                 entity.setDescricao(fieldInsertDescricao.getText());
-
+                entity.setAtivo(SimNaoType.SIM);
 
                 GeneroService service = SpringConfig.context.getBean(GeneroService.class);
 
@@ -421,15 +432,15 @@ public class TelaGenero extends javax.swing.JDialog {
             public void run() {
                 entity.setNome(fieldUpdateNome.getText());
                 entity.setDescricao(fieldUpdateDescricao.getText());
-
+                entity.setAtivo(Arrays.asList(SimNaoType.values()).get(comboUpdateAtivo.getSelectedIndex()));
 
                 GeneroService service = SpringConfig.context.getBean(GeneroService.class);
 
                 service.update(entity);
-                
+
                 fieldUpdateNome.setText("");
                 fieldUpdateDescricao.setText("");
-                
+
                 dialogUpdate.dispose();
                 load();
             }
@@ -491,12 +502,12 @@ public class TelaGenero extends javax.swing.JDialog {
     private javax.swing.JButton buttonNovo;
     private javax.swing.JButton buttonPesquisar;
     private javax.swing.JButton buttonUpdateSalvar;
-    private javax.swing.JComboBox<String> comboUpdateSituacao;
+    private javax.swing.JComboBox<String> comboSearchAtivo;
+    private javax.swing.JComboBox<String> comboUpdateAtivo;
     private javax.swing.JDialog dialogInsert;
     private javax.swing.JDialog dialogUpdate;
     private javax.swing.JTextField fieldInsertDescricao;
     private javax.swing.JTextField fieldInsertNome;
-    private javax.swing.JTextField fieldSearchDescricao;
     private javax.swing.JTextField fieldSearchId;
     private javax.swing.JTextField fieldSearchNome;
     private javax.swing.JTextField fieldUpdateDescricao;
@@ -506,12 +517,12 @@ public class TelaGenero extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabelGenero;
+    private javax.swing.JTable tableGenero;
     // End of variables declaration//GEN-END:variables
 }
