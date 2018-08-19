@@ -121,6 +121,8 @@ public class TelaInicial extends javax.swing.JFrame {
         menuItemProduto = new javax.swing.JMenuItem();
         menuItemGenero = new javax.swing.JMenuItem();
         menuItemDiretor = new javax.swing.JMenuItem();
+        menuItemSala = new javax.swing.JMenuItem();
+        menuItemFaixaEtaria = new javax.swing.JMenuItem();
         menuItemTipoProduto = new javax.swing.JMenuItem();
         menuItemCliente = new javax.swing.JMenuItem();
         menuItemSaldo = new javax.swing.JMenuItem();
@@ -508,6 +510,24 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         menuCadastro.add(menuItemDiretor);
 
+        menuItemSala.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK));
+        menuItemSala.setText("Salas");
+        menuItemSala.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemSalaActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(menuItemSala);
+
+        menuItemFaixaEtaria.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.ALT_MASK));
+        menuItemFaixaEtaria.setText("Faixas Etárias");
+        menuItemFaixaEtaria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemFaixaEtariaActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(menuItemFaixaEtaria);
+
         menuItemTipoProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
         menuItemTipoProduto.setText("Cargos");
         menuItemTipoProduto.addActionListener(new java.awt.event.ActionListener() {
@@ -744,6 +764,22 @@ public class TelaInicial extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_menuItemDiretorActionPerformed
 
+    private void menuItemSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSalaActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TelaSala(new TelaInicial(), true).setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_menuItemSalaActionPerformed
+
+    private void menuItemFaixaEtariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemFaixaEtariaActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TelaFaixaEtaria(new TelaInicial(), true).setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_menuItemFaixaEtariaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -840,8 +876,10 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemCliente;
     private javax.swing.JMenuItem menuItemDiretor;
     private javax.swing.JMenuItem menuItemEncomenda;
+    private javax.swing.JMenuItem menuItemFaixaEtaria;
     private javax.swing.JMenuItem menuItemGenero;
     private javax.swing.JMenuItem menuItemProduto;
+    private javax.swing.JMenuItem menuItemSala;
     private javax.swing.JMenuItem menuItemSaldo;
     private javax.swing.JMenuItem menuItemTipoProduto;
     private javax.swing.JMenuItem menuItemUsuario;
