@@ -2,20 +2,20 @@
 package views;
 
 import configuration.SpringConfig;
-import entities.Genero;
+import entities.FaixaEtaria;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import services.GeneroService;
+import services.FaixaEtariaService;
 import services.ProdutoService;
 import types.SimNaoType;
 import types.SituacaoType;
 
 public class TelaFaixaEtaria extends javax.swing.JDialog {
 
-    private Genero entitySearch;
-    private Genero entity;
+    private FaixaEtaria entitySearch;
+    private FaixaEtaria entity;
     
     public TelaFaixaEtaria(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -23,7 +23,7 @@ public class TelaFaixaEtaria extends javax.swing.JDialog {
         
         this.setLocationRelativeTo(null);
         
-        entitySearch = new Genero();
+        entitySearch = new FaixaEtaria();
         
         comboSearchAtivo.removeAllItems();
         comboSearchAtivo.addItem("");
@@ -32,11 +32,11 @@ public class TelaFaixaEtaria extends javax.swing.JDialog {
             comboSearchAtivo.addItem(simNao.getValue());
         }
                
-        loadTiposGeneros();        
+        loadTiposFaixasEtarias();        
     }
     
     private void load() {
-        GeneroService service = SpringConfig.context.getBean(GeneroService.class);
+        FaixaEtariaService service = SpringConfig.context.getBean(FaixaEtariaService.class);
         
         if (!fieldSearchId.getText().equals("")) {
             entitySearch.setId(Integer.valueOf(fieldSearchId.getText()));
@@ -52,22 +52,22 @@ public class TelaFaixaEtaria extends javax.swing.JDialog {
         
         populateTable(service.find(entitySearch));
         
-        entitySearch = new Genero();
+        entitySearch = new FaixaEtaria();
     }
     
-    private void loadTiposGeneros() {
+    private void loadTiposFaixasEtarias() {
 
     }
     
-    private void populateTable(List<Genero> list) {
-        DefaultTableModel model = (DefaultTableModel) tableGenero.getModel();
+    private void populateTable(List<FaixaEtaria> list) {
+        DefaultTableModel model = (DefaultTableModel) tableFaixaEtaria.getModel();
         Object rowData[] = new Object[3];
         model.setRowCount(0);
         
-        for ( Genero genero : list ) {
-            rowData[0] = genero.getId();
-            rowData[1] = genero.getNome();
-            rowData[2] = genero.getAtivo().getValue();
+        for ( FaixaEtaria faixaEtaria : list ) {
+            rowData[0] = faixaEtaria.getId();
+            rowData[1] = faixaEtaria.getNome();
+            rowData[2] = faixaEtaria.getAtivo().getValue();
 
             model.addRow(rowData);
         }
@@ -102,7 +102,7 @@ public class TelaFaixaEtaria extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableGenero = new javax.swing.JTable();
+        tableFaixaEtaria = new javax.swing.JTable();
         fieldSearchId = new javax.swing.JTextField();
         fieldSearchNome = new javax.swing.JTextField();
         buttonPesquisar = new javax.swing.JButton();
@@ -238,7 +238,7 @@ public class TelaFaixaEtaria extends javax.swing.JDialog {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cadastro de Generos");
+        setTitle("Cadastro de Faixas Etarias");
 
         buttonEditar.setText("Editar");
         buttonEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -251,7 +251,7 @@ public class TelaFaixaEtaria extends javax.swing.JDialog {
 
         jLabel2.setText("Nome:");
 
-        tableGenero.setModel(new javax.swing.table.DefaultTableModel(
+        tableFaixaEtaria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -274,16 +274,16 @@ public class TelaFaixaEtaria extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        tableGenero.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tableGenero);
-        if (tableGenero.getColumnModel().getColumnCount() > 0) {
-            tableGenero.getColumnModel().getColumn(0).setMinWidth(50);
-            tableGenero.getColumnModel().getColumn(0).setPreferredWidth(50);
-            tableGenero.getColumnModel().getColumn(0).setMaxWidth(50);
-            tableGenero.getColumnModel().getColumn(1).setResizable(false);
-            tableGenero.getColumnModel().getColumn(2).setMinWidth(80);
-            tableGenero.getColumnModel().getColumn(2).setPreferredWidth(80);
-            tableGenero.getColumnModel().getColumn(2).setMaxWidth(80);
+        tableFaixaEtaria.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tableFaixaEtaria);
+        if (tableFaixaEtaria.getColumnModel().getColumnCount() > 0) {
+            tableFaixaEtaria.getColumnModel().getColumn(0).setMinWidth(50);
+            tableFaixaEtaria.getColumnModel().getColumn(0).setPreferredWidth(50);
+            tableFaixaEtaria.getColumnModel().getColumn(0).setMaxWidth(50);
+            tableFaixaEtaria.getColumnModel().getColumn(1).setResizable(false);
+            tableFaixaEtaria.getColumnModel().getColumn(2).setMinWidth(80);
+            tableFaixaEtaria.getColumnModel().getColumn(2).setPreferredWidth(80);
+            tableFaixaEtaria.getColumnModel().getColumn(2).setMaxWidth(80);
         }
 
         buttonPesquisar.setText("Pesquisar");
@@ -310,15 +310,12 @@ public class TelaFaixaEtaria extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(buttonPesquisar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buttonNovo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buttonEditar))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(buttonPesquisar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonNovo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonEditar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -328,8 +325,8 @@ public class TelaFaixaEtaria extends javax.swing.JDialog {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(fieldSearchNome, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fieldSearchId, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(comboSearchAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(comboSearchAtivo, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,10 +359,10 @@ public class TelaFaixaEtaria extends javax.swing.JDialog {
     private void buttonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                entity = new Genero();
-                entity.setId((Integer) tableGenero.getValueAt(tableGenero.getSelectedRow(), 0));
+                entity = new FaixaEtaria();
+                entity.setId((Integer) tableFaixaEtaria.getValueAt(tableFaixaEtaria.getSelectedRow(), 0));
 
-                entity = SpringConfig.context.getBean(GeneroService.class).find(entity).get(0);
+                entity = SpringConfig.context.getBean(FaixaEtariaService.class).find(entity).get(0);
 
                 fieldUpdateId.setText(String.valueOf(entity.getId()));
                 fieldUpdateNome.setText(entity.getNome());
@@ -392,14 +389,12 @@ public class TelaFaixaEtaria extends javax.swing.JDialog {
     private void buttonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNovoActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                entity = new Genero();
+                entity = new FaixaEtaria();
 
                 fieldInsertNome.setText("");
                 fieldInsertDescricao.setText("");
                 
-                loadTiposGeneros();
-                
-//                comboInsertTipoProduto.removeAllItems();
+                loadTiposFaixasEtarias();
                 
                 dialogInsert.setLocationRelativeTo(null);
                 dialogInsert.setVisible(true);
@@ -414,7 +409,7 @@ public class TelaFaixaEtaria extends javax.swing.JDialog {
                 entity.setDescricao(fieldInsertDescricao.getText());
                 entity.setAtivo(SimNaoType.SIM);
 
-                GeneroService service = SpringConfig.context.getBean(GeneroService.class);
+                FaixaEtariaService service = SpringConfig.context.getBean(FaixaEtariaService.class);
 
                 service.insert(entity);
                 
@@ -434,7 +429,7 @@ public class TelaFaixaEtaria extends javax.swing.JDialog {
                 entity.setDescricao(fieldUpdateDescricao.getText());
                 entity.setAtivo(Arrays.asList(SimNaoType.values()).get(comboUpdateAtivo.getSelectedIndex()));
 
-                GeneroService service = SpringConfig.context.getBean(GeneroService.class);
+                FaixaEtariaService service = SpringConfig.context.getBean(FaixaEtariaService.class);
 
                 service.update(entity);
 
@@ -531,6 +526,6 @@ public class TelaFaixaEtaria extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableGenero;
+    private javax.swing.JTable tableFaixaEtaria;
     // End of variables declaration//GEN-END:variables
 }
