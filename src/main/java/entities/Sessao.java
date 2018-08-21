@@ -11,8 +11,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -25,11 +23,9 @@ import types.SimNaoType;
 public class Sessao implements Serializable {
     
     private Integer id;
-    private Calendar dataExibicao;
+    private Calendar horario;
     private BigDecimal preco;
     private SimNaoType ativo;
-    private Sala sala;
-    private Filme filme;
     
     public Sessao() {}
 
@@ -46,15 +42,15 @@ public class Sessao implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-
+    
     @Column(name = "dt_exibicao")
-    @Temporal(value = TemporalType.DATE)
-    public Calendar getDataExibicao() {
-        return dataExibicao;
+    @Temporal(value = TemporalType.TIMESTAMP)
+    public Calendar getHorario() {
+        return horario;
     }
 
-    public void setDataExibicao(Calendar dataExibicao) {
-        this.dataExibicao = dataExibicao;
+    public void setHorario(Calendar horario) {
+        this.horario = horario;
     }
 
     @Column(name = "vl_preco")
@@ -76,26 +72,4 @@ public class Sessao implements Serializable {
         this.ativo = ativo;
     }
 
-    @JoinColumn(name = "id_sala")
-    @ManyToOne
-    public Sala getSala() {
-        return sala;
-    }
-
-    public void setSala(Sala sala) {
-        this.sala = sala;
-    }
-
-    @JoinColumn(name = "id_filme")
-    @ManyToOne
-    public Filme getFilme() {
-        return filme;
-    }
-
-    public void setFilme(Filme filme) {
-        this.filme = filme;
-    }
-    
-    
-    
 }

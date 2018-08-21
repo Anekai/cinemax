@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import types.SimNaoType;
-import types.TipoUnidadeType;
 
 @Entity
 @Table(name = "produtos")
@@ -15,7 +14,6 @@ public class Produto implements Serializable {
 
     private Integer id;
     private String nome;
-    private TipoUnidadeType unidade;
     private Integer quantidade;
     private BigDecimal preco;
     private SimNaoType ativo;
@@ -42,16 +40,6 @@ public class Produto implements Serializable {
     }
     public void setNome(String nome) {
         this.nome = nome;
-    }
-    
-    @Column(name = "dm_unidade")
-    @Enumerated(EnumType.STRING)
-    public TipoUnidadeType getUnidade() {
-        return unidade;
-    }
-    
-    public void setUnidade(TipoUnidadeType unidade) {
-        this.unidade = unidade;
     }
     
     @Column(name = "vl_quantidade")
