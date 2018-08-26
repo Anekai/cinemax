@@ -18,6 +18,8 @@ import java.util.Date;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
+
+import log.ArquivoLog;
 import services.ProdutoService;
 
 public class TelaInicial extends javax.swing.JFrame {
@@ -30,11 +32,11 @@ public class TelaInicial extends javax.swing.JFrame {
         initComponents();
         loadFieldsVenda();
         loadFieldsEncomenda();
-        
-        
+
+
         this.setLocationRelativeTo(null);
     }
-    
+
     private void loadFieldsVenda() {
         
 
@@ -817,6 +819,9 @@ public class TelaInicial extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+
+                new ArquivoLog("Erros 1");
+
                 TelaInicial frame = new TelaInicial();
                 
                 frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
