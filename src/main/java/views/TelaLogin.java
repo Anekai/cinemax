@@ -5,6 +5,7 @@
  */
 package views;
 
+import configuration.ParamConfig;
 import entities.Funcionario;
 import configuration.SpringConfig;
 import java.security.MessageDigest;
@@ -147,11 +148,19 @@ public class TelaLogin extends javax.swing.JFrame {
                 e.printStackTrace();
             }
             
+            //funcionarioLogado = usuarioService.findById(1);
+            
+            //funcionarioLogado.setSenha(senha);
+            
+            //usuarioService.update(funcionarioLogado);
+            
             funcionarioLogado = usuarioService.loginUsuario(fieldLogin.getText(), senha);
             
             if ( funcionarioLogado != null ){
                 labelLoginErro.setText("");
                 labelLoginErro.setVisible(false);
+                
+                ParamConfig config = new ParamConfig(funcionarioLogado);
                 
                 java.awt.EventQueue.invokeLater(new Runnable() {
                     public void run() {
