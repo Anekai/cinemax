@@ -148,11 +148,11 @@ public class TelaLogin extends javax.swing.JFrame {
                 e.printStackTrace();
             }
             
-            //funcionarioLogado = usuarioService.findById(1);
+//            funcionarioLogado = usuarioService.findById(3);
             
-            //funcionarioLogado.setSenha(senha);
+//            funcionarioLogado.setSenha(senha);
             
-            //usuarioService.update(funcionarioLogado);
+//            usuarioService.update(funcionarioLogado);
             
             funcionarioLogado = usuarioService.loginUsuario(fieldLogin.getText(), senha);
             

@@ -43,4 +43,8 @@ public class FuncionarioService {
         return dao.loginUsuario( login, senha );
     }
 
+    public void insert() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
