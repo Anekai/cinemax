@@ -26,6 +26,10 @@ public class FuncionarioService {
     public void delete(Funcionario entity) {
         dao.delete(entity);
     }
+    
+    public Funcionario findById(Integer id) {
+        return dao.findById(id);
+    }
 
     public List<Funcionario> find() {
         return dao.find(new Funcionario());

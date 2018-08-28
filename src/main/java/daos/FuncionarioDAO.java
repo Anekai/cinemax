@@ -29,6 +29,14 @@ public class FuncionarioDAO {
     public void delete(Funcionario entity) {
         em.remove(entity);
     }
+    
+    public Funcionario findById(Integer id) {
+        Criteria criteria = ((Session)em.getDelegate()).createCriteria(Funcionario.class);
+        
+        criteria.add(Restrictions.eq("id", id));
+        
+        return (Funcionario)criteria.uniqueResult();
+    }
 
     public List<Funcionario> find(Funcionario entity) {
         Criteria criteria = ((Session)em.getDelegate()).createCriteria(Funcionario.class);
