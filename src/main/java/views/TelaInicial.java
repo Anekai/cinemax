@@ -131,6 +131,7 @@ public class TelaInicial extends javax.swing.JFrame {
         menuItemUsuario = new javax.swing.JMenuItem();
         menuItemVenda = new javax.swing.JMenuItem();
         menuItemEncomenda = new javax.swing.JMenuItem();
+        menuItemAuditoria = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menuVendaPeriodoRelatorio = new javax.swing.JMenuItem();
         menuProdutoRelatorio = new javax.swing.JMenuItem();
@@ -579,6 +580,14 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         menuCadastro.add(menuItemEncomenda);
 
+        menuItemAuditoria.setText("Auditoria");
+        menuItemAuditoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemAuditoriaActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(menuItemAuditoria);
+
         jMenuBar1.add(menuCadastro);
 
         jMenu2.setText("Relatórios");
@@ -782,6 +791,14 @@ public class TelaInicial extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_menuItemFaixaEtariaActionPerformed
 
+    private void menuItemAuditoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAuditoriaActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TelaAuditoria(new TelaInicial(), true).setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_menuItemAuditoriaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -878,6 +895,7 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JLabel labelValorTotalVenda;
     private javax.swing.JLabel labelVendaMessage;
     private javax.swing.JMenu menuCadastro;
+    private javax.swing.JMenuItem menuItemAuditoria;
     private javax.swing.JMenuItem menuItemCliente;
     private javax.swing.JMenuItem menuItemDiretor;
     private javax.swing.JMenuItem menuItemEncomenda;

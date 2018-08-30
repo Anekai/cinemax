@@ -1,5 +1,6 @@
 package daos;
 
+import configuration.ParamConfig;
 import entities.Produto;
 import org.hibernate.Session;
 import org.hibernate.criterion.Example;
@@ -23,10 +24,14 @@ public class ProdutoDAO {
     }
 
     public void update(Produto entity) {
+        ParamConfig config = new ParamConfig();
+        em.createNativeQuery("SET LOCAL \"usuario.logado\" = '" + config.getFuncionarioLogado().getNome() + " " + config.getFuncionarioLogado().getSobreNome() + "' ").executeUpdate();
         em.merge(entity);
     }
 
     public void delete(Produto entity) {
+        ParamConfig config = new ParamConfig();
+        em.createNativeQuery("SET LOCAL \"usuario.logado\" = '" + config.getFuncionarioLogado().getNome() + " " + config.getFuncionarioLogado().getSobreNome() + "' ").executeUpdate();
         em.remove(entity);
     }
     

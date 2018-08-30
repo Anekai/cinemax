@@ -1,6 +1,7 @@
 
 package daos;
 
+import configuration.ParamConfig;
 import entities.FaixaEtaria;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -23,10 +24,14 @@ public class FaixaEtariaDAO {
     }
 
     public void update(FaixaEtaria entity) {
+        ParamConfig config = new ParamConfig();
+        em.createNativeQuery("SET LOCAL \"usuario.logado\" = '" + config.getFuncionarioLogado().getNome() + " " + config.getFuncionarioLogado().getSobreNome() + "' ").executeUpdate();
         em.merge(entity);
     }
 
     public void delete(FaixaEtaria entity) {
+        ParamConfig config = new ParamConfig();
+        em.createNativeQuery("SET LOCAL \"usuario.logado\" = '" + config.getFuncionarioLogado().getNome() + " " + config.getFuncionarioLogado().getSobreNome() + "' ").executeUpdate();
         em.remove(entity);
     }
     

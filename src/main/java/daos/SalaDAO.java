@@ -1,6 +1,7 @@
 
 package daos;
 
+import configuration.ParamConfig;
 import entities.Sala;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -23,10 +24,14 @@ public class SalaDAO {
     }
 
     public void update(Sala entity) {
+        ParamConfig config = new ParamConfig();
+        em.createNativeQuery("SET LOCAL \"usuario.logado\" = '" + config.getFuncionarioLogado().getNome() + " " + config.getFuncionarioLogado().getSobreNome() + "' ").executeUpdate();
         em.merge(entity);
     }
 
     public void delete(Sala entity) {
+        ParamConfig config = new ParamConfig();
+        em.createNativeQuery("SET LOCAL \"usuario.logado\" = '" + config.getFuncionarioLogado().getNome() + " " + config.getFuncionarioLogado().getSobreNome() + "' ").executeUpdate();
         em.remove(entity);
     }
     

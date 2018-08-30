@@ -1,6 +1,7 @@
 
 package daos;
 
+import configuration.ParamConfig;
 import entities.Exibicao;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -23,10 +24,14 @@ public class ExibicaoDAO {
     }
 
     public void update(Exibicao entity) {
+        ParamConfig config = new ParamConfig();
+        em.createNativeQuery("SET LOCAL \"usuario.logado\" = '" + config.getFuncionarioLogado().getNome() + " " + config.getFuncionarioLogado().getSobreNome() + "' ").executeUpdate();
         em.merge(entity);
     }
 
     public void delete(Exibicao entity) {
+        ParamConfig config = new ParamConfig();
+        em.createNativeQuery("SET LOCAL \"usuario.logado\" = '" + config.getFuncionarioLogado().getNome() + " " + config.getFuncionarioLogado().getSobreNome() + "' ").executeUpdate();
         em.remove(entity);
     }
     
