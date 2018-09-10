@@ -35,7 +35,7 @@ public class Sessao implements Serializable {
 
     @Id
     @GeneratedValue(generator = "seq_sessao", strategy = GenerationType.IDENTITY)
-    @Column(name = "id_ingresso")
+    @Column(name = "id_sessao")
     public Integer getId() {
         return id;
     }
@@ -43,7 +43,7 @@ public class Sessao implements Serializable {
         this.id = id;
     }
     
-    @Column(name = "dt_exibicao")
+    @Column(name = "dt_sessao")
     @Temporal(value = TemporalType.TIMESTAMP)
     public Calendar getHorario() {
         return horario;
