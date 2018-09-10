@@ -6,6 +6,8 @@ import entities.Cargo;
 import java.util.Arrays;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+
+import log.ArquivoLog;
 import services.CargoService;
 import types.SimNaoType;
 
@@ -17,37 +19,45 @@ public class TelaCargo extends javax.swing.JDialog {
     
     public TelaCargo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents();
-        
-        this.setLocationRelativeTo(null);
-        
-        entitySearch = new Cargo();
-        
-        comboSearchAtivo.removeAllItems();
-        comboSearchAtivo.addItem("");
-        
-        for ( SimNaoType simNao : SimNaoType.values() ) {
-            comboSearchAtivo.addItem(simNao.getValue());
+        try{
+            initComponents();
+
+            this.setLocationRelativeTo(null);
+
+            entitySearch = new Cargo();
+
+            comboSearchAtivo.removeAllItems();
+            comboSearchAtivo.addItem("");
+
+            for ( SimNaoType simNao : SimNaoType.values() ) {
+                comboSearchAtivo.addItem(simNao.getValue());
+            }
+
+        }catch(Exception e){
+            new ArquivoLog(e.toString());
         }
     }
     
     private void load() {
-        CargoService service = SpringConfig.context.getBean(CargoService.class);
-        
-        if (!fieldSearchId.getText().equals("")) {
-            entitySearch.setId(Integer.valueOf(fieldSearchId.getText()));
+        try{
+            CargoService service = SpringConfig.context.getBean(CargoService.class);
+
+            if (!fieldSearchId.getText().equals("")) {
+                entitySearch.setId(Integer.valueOf(fieldSearchId.getText()));
+            }
+
+            if (!fieldSearchNome.getText().equals("")) {
+                entitySearch.setNome(fieldSearchNome.getText());
+            }
+
+            if (comboSearchAtivo.getSelectedIndex() != 0) {
+                entitySearch.setAtivo(Arrays.asList(SimNaoType.values()).get(comboSearchAtivo.getSelectedIndex()-1));
+            }
+
+            populateTable(service.find(entitySearch));
+        }catch(Exception e){
+            new ArquivoLog(e.toString());
         }
-        
-        if (!fieldSearchNome.getText().equals("")) {
-            entitySearch.setNome(fieldSearchNome.getText());
-        }
-        
-        if (comboSearchAtivo.getSelectedIndex() != 0) {
-            entitySearch.setAtivo(Arrays.asList(SimNaoType.values()).get(comboSearchAtivo.getSelectedIndex()-1));
-        }
-        
-        
-        populateTable(service.find(entitySearch));
     }
     
     private void populateTable(List<Cargo> list) {

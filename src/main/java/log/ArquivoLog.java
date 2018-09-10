@@ -1,9 +1,11 @@
 package log;
 
 import java.io.*;
+import java.text.DateFormat;
 import java.util.Vector;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class ArquivoLog {
 
@@ -22,10 +24,10 @@ public class ArquivoLog {
     {
         try {
             
-            Date data = new Date();
-            SimpleDateFormat formatador = new SimpleDateFormat("yyyy-MM-dd");
-            formatador.format(data);
-            
+            final DateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            final Calendar cal = Calendar.getInstance();
+            String usavel = df.format(cal.getTime());
+                       
             arquivo = new File("exceptions.log");
             fileReader = new FileReader(arquivo);
             bufferedReader = new BufferedReader(fileReader);
@@ -38,8 +40,9 @@ public class ArquivoLog {
             for (int i = 0; i<texto.size();i++){
                 bufferedWriter.write(texto.get(i).toString());
                 bufferedWriter.newLine();
+                bufferedWriter.newLine();
             }
-            bufferedWriter.write(erros);
+            bufferedWriter.write(usavel + " - " + erros);
             bufferedReader.close();
             bufferedWriter.close();
 

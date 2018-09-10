@@ -13,20 +13,30 @@ import types.SimNaoType;
 public class MainView {
     
     public static void main(String[] args) {
+        
+//        CargoService service = SpringConfig.context.getBean(CargoService.class);
+//
+//        Cargo entity = new Cargo();
+//
+//        entity.setNome("Gerente");
+//        entity.setFuncionalidade("Gerenciar");
+//        entity.setAtivo(SimNaoType.SIM);
+//
+        
         FuncionarioService service = SpringConfig.context.getBean(FuncionarioService.class);
 
         Funcionario entity = new Funcionario();
 
-        entity.setNome("Alexandre");
-        entity.setSobreNome("Klabunde");
+        entity.setNome("Guilherme");
+        entity.setSobreNome("Maccali");
         entity.setAtivo(SimNaoType.SIM);
-        entity.setCargo(new Cargo(3));
-        entity.setLogin("alexandre.klabunde");
+        entity.setCargo(new Cargo(1));
+        entity.setLogin("guilherme.maccali");
         entity.setSenha("teste123");
         entity.setDataContratacao(Calendar.getInstance());
         entity.setDataNascimento(Calendar.getInstance());
 
-        service.find();
+        service.insert(entity);
     }
     
 }
