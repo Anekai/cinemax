@@ -1,6 +1,7 @@
 
 package daos;
 
+import configuration.ParamConfig;
 import entities.Ingresso;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -23,10 +24,14 @@ public class IngressoDAO {
     }
 
     public void update(Ingresso entity) {
+        ParamConfig config = new ParamConfig();
+        em.createNativeQuery("SET LOCAL \"usuario.logado\" = '" + config.getFuncionarioLogado().getNome() + " " + config.getFuncionarioLogado().getSobreNome() + "' ").executeUpdate();
         em.merge(entity);
     }
 
     public void delete(Ingresso entity) {
+        ParamConfig config = new ParamConfig();
+        em.createNativeQuery("SET LOCAL \"usuario.logado\" = '" + config.getFuncionarioLogado().getNome() + " " + config.getFuncionarioLogado().getSobreNome() + "' ").executeUpdate();
         em.remove(entity);
     }
     

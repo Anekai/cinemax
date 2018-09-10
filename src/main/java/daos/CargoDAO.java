@@ -30,6 +30,8 @@ public class CargoDAO {
     }
 
     public void delete(Cargo entity) {
+        ParamConfig config = new ParamConfig();
+        em.createNativeQuery("SET LOCAL \"usuario.logado\" = '" + config.getFuncionarioLogado().getNome() + " " + config.getFuncionarioLogado().getSobreNome() + "' ").executeUpdate();
         em.remove(entity);
     }
     

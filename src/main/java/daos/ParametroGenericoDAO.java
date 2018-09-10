@@ -2,7 +2,7 @@
 package daos;
 
 import configuration.ParamConfig;
-import entities.Sessao;
+import entities.ParametroGenerico;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,37 +14,35 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class SessaoDAO {
+public class ParametroGenericoDAO {
     
     @PersistenceContext
     private EntityManager em;
 
-    public void insert(Sessao entity) {
+    public void insert(ParametroGenerico entity) {
         em.persist(entity);
     }
 
-    public void update(Sessao entity) {
+    public void update(ParametroGenerico entity) {
         ParamConfig config = new ParamConfig();
         em.createNativeQuery("SET LOCAL \"usuario.logado\" = '" + config.getFuncionarioLogado().getNome() + " " + config.getFuncionarioLogado().getSobreNome() + "' ").executeUpdate();
         em.merge(entity);
     }
 
-    public void delete(Sessao entity) {
-        ParamConfig config = new ParamConfig();
-        em.createNativeQuery("SET LOCAL \"usuario.logado\" = '" + config.getFuncionarioLogado().getNome() + " " + config.getFuncionarioLogado().getSobreNome() + "' ").executeUpdate();
+    public void delete(ParametroGenerico entity) {
         em.remove(entity);
     }
     
-    public Sessao findById(Integer id) {
-        Criteria criteria = ((Session)em.getDelegate()).createCriteria(Sessao.class);
+    public ParametroGenerico findById(Integer id) {
+        Criteria criteria = ((Session)em.getDelegate()).createCriteria(ParametroGenerico.class);
         
         criteria.add(Restrictions.eq("id", id));
         
-        return (Sessao)criteria.uniqueResult();
+        return (ParametroGenerico)criteria.uniqueResult();
     }
     
-    public List<Sessao> find(Sessao entity) {
-        Criteria criteria = ((Session)em.getDelegate()).createCriteria(Sessao.class);
+    public List<ParametroGenerico> find(ParametroGenerico entity) {
+        Criteria criteria = ((Session)em.getDelegate()).createCriteria(ParametroGenerico.class);
         
         criteria.add(Example.create(entity));
         
