@@ -14,7 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import types.SimNaoType;
-import types.TipoFilmeType;
 
 @Entity
 @Table(name = "filmes")
@@ -26,7 +25,6 @@ public class Filme implements Serializable {
     private String titulo;
     private String descricao;
     private Integer duracao;
-    private TipoFilmeType tipo;
     private SimNaoType ativo;
     private SimNaoType emCartaz;
     private Diretor diretor;
@@ -83,16 +81,6 @@ public class Filme implements Serializable {
 
     public void setDuracao(Integer duracao) {
         this.duracao = duracao;
-    }
-
-    @Column(name = "dm_tipo")
-    @Enumerated(EnumType.STRING)
-    public TipoFilmeType getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(TipoFilmeType tipo) {
-        this.tipo = tipo;
     }
 
     @Column(name = "dm_ativo")

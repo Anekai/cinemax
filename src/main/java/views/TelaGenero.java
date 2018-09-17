@@ -3,14 +3,17 @@ package views;
 
 import configuration.SpringConfig;
 import entities.Genero;
+import entities.Permissao;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import services.GeneroService;
+import services.PermissaoService;
 import services.ProdutoService;
 import types.SimNaoType;
 import types.SituacaoType;
+import types.TelaType;
 
 public class TelaGenero extends javax.swing.JDialog {
 
@@ -22,6 +25,12 @@ public class TelaGenero extends javax.swing.JDialog {
         initComponents();
         
         this.setLocationRelativeTo(null);
+        
+        Permissao permissao = SpringConfig.context.getBean(PermissaoService.class).findPermissaoByTelaForUsuarioLogado(TelaType.GENEROS);
+        
+        buttonPesquisar.setEnabled(permissao.getPermiteVisualizar() == SimNaoType.SIM);
+        buttonNovo.setEnabled(permissao.getPermiteCriar() == SimNaoType.SIM);
+        buttonEditar.setEnabled(permissao.getPermiteEditar() == SimNaoType.SIM);
         
         entitySearch = new Genero();
         
