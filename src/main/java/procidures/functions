@@ -1,0 +1,24 @@
+CREATE OR REPLACE FUNCTION totalFuncionaios()
+RETURNS INTEGER AS $total$
+DECLARE
+total INTEGER;
+
+BEGIN 
+SELECT count(*) INTO  total from funcionarios;
+RETURN total;
+END;
+
+$total$ LANGUAGE plpgsql;
+
+SELECT totalFuncionaios()
+
+DROP FUNCTION sessoeshoje()
+CREATE OR REPLACE FUNCTION sessoesHoje(hoje DATE)
+RETURNS SETOF RECORD AS $$
+BEGIN 
+RETURN QUERY SELECT * FROM sessoes WHERE dt_exibicao = hoje;
+END;
+
+$$ LANGUAGE plpgsql;
+
+SELECT sessoesHoje('2018-08-30')
