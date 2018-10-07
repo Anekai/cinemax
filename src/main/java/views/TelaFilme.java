@@ -186,29 +186,28 @@ public class TelaFilme extends javax.swing.JDialog {
                     .addComponent(jLabel15)
                     .addGroup(dialogInsertLayout.createSequentialGroup()
                         .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(dialogInsertLayout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(comboInsertFaixaEtaria, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(dialogInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(dialogInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comboInsertEmCartaz, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboInsertFaixaEtaria, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(dialogInsertLayout.createSequentialGroup()
                         .addGroup(dialogInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel13))
-                        .addGap(21, 21, 21)
-                        .addGroup(dialogInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(fieldInsertAno, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-                            .addComponent(fieldInsertDuracao)))
-                    .addGroup(dialogInsertLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(29, 29, 29)
-                        .addComponent(fieldInsertTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(dialogInsertLayout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addGap(18, 18, 18)
-                        .addComponent(comboInsertEmCartaz, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 252, Short.MAX_VALUE))
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel6))
+                        .addGap(27, 27, 27)
+                        .addGroup(dialogInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fieldInsertTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(dialogInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(fieldInsertAno, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(fieldInsertDuracao, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(0, 249, Short.MAX_VALUE))
         );
         dialogInsertLayout.setVerticalGroup(
             dialogInsertLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,7 +252,7 @@ public class TelaFilme extends javax.swing.JDialog {
         dialogUpdate.setTitle("Atualizar Produto");
         dialogUpdate.setModal(true);
         dialogUpdate.setResizable(false);
-        dialogUpdate.setSize(new java.awt.Dimension(300, 300));
+        dialogUpdate.setSize(new java.awt.Dimension(500, 700));
 
         jLabel5.setText("ID:");
 
@@ -369,7 +368,7 @@ public class TelaFilme extends javax.swing.JDialog {
                         .addGap(41, 41, 41)
                         .addComponent(jLabel19))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(buttonUpdateSalvar)
                 .addContainerGap())
         );
@@ -530,6 +529,9 @@ public class TelaFilme extends javax.swing.JDialog {
 
                 fieldUpdateId.setText(String.valueOf(entity.getId()));
                 fieldUpdateTitulo.setText(entity.getTitulo());
+                fieldUpdateDuracao.setText(String.valueOf(entity.getDuracao()));
+                fieldUpdateAno.setText(String.valueOf(entity.getAno()));
+                textAreaUpdateDescricao.setText(entity.getDescricao());
 
                 comboUpdateEmCartaz.removeAllItems();
                 
