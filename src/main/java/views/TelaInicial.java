@@ -126,12 +126,12 @@ public class TelaInicial extends javax.swing.JFrame {
         menuItemSala = new javax.swing.JMenuItem();
         menuItemFaixaEtaria = new javax.swing.JMenuItem();
         menuItemTipoProduto = new javax.swing.JMenuItem();
+        menuItemPermissoes = new javax.swing.JMenuItem();
         menuItemCliente = new javax.swing.JMenuItem();
         menuItemSaldo = new javax.swing.JMenuItem();
         menuItemUsuario = new javax.swing.JMenuItem();
         menuItemVenda = new javax.swing.JMenuItem();
         menuItemEncomenda = new javax.swing.JMenuItem();
-        menuItemAuditoria = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menuVendaPeriodoRelatorio = new javax.swing.JMenuItem();
         menuProdutoRelatorio = new javax.swing.JMenuItem();
@@ -540,6 +540,15 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         menuCadastro.add(menuItemTipoProduto);
 
+        menuItemPermissoes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK));
+        menuItemPermissoes.setText("Permissões");
+        menuItemPermissoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemPermissoesActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(menuItemPermissoes);
+
         menuItemCliente.setText("Cliente");
         menuItemCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -579,14 +588,6 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
         menuCadastro.add(menuItemEncomenda);
-
-        menuItemAuditoria.setText("Auditoria");
-        menuItemAuditoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemAuditoriaActionPerformed(evt);
-            }
-        });
-        menuCadastro.add(menuItemAuditoria);
 
         jMenuBar1.add(menuCadastro);
 
@@ -799,6 +800,14 @@ public class TelaInicial extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_menuItemAuditoriaActionPerformed
 
+    private void menuItemPermissoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemPermissoesActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+             public void run() {
+                 new TelaPermissao(new TelaInicial(), true).setVisible(true);
+             }
+         });
+    }//GEN-LAST:event_menuItemPermissoesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -895,12 +904,12 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JLabel labelValorTotalVenda;
     private javax.swing.JLabel labelVendaMessage;
     private javax.swing.JMenu menuCadastro;
-    private javax.swing.JMenuItem menuItemAuditoria;
     private javax.swing.JMenuItem menuItemCliente;
     private javax.swing.JMenuItem menuItemDiretor;
     private javax.swing.JMenuItem menuItemEncomenda;
     private javax.swing.JMenuItem menuItemFaixaEtaria;
     private javax.swing.JMenuItem menuItemGenero;
+    private javax.swing.JMenuItem menuItemPermissoes;
     private javax.swing.JMenuItem menuItemProduto;
     private javax.swing.JMenuItem menuItemSala;
     private javax.swing.JMenuItem menuItemSaldo;
