@@ -58,6 +58,10 @@ public class Formatacao {
     public static JFormattedTextField getDataHora() {
         return getFormatado("##/##/#### ##:##");
     }
+    
+    public static JFormattedTextField getHora() {
+        return getFormatado("##:##");
+    }
 
     public void formatoDecimal(JTextField campo) {
         campo.setText(df.format(Double.parseDouble(campo.getText())));
