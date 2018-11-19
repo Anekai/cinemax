@@ -16,7 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "produtos")
+@Table(name = "exibicoes")
 @SequenceGenerator(allocationSize = 1, name = "seq_exibicao", sequenceName = "seq_exibicao")
 public class Exibicao implements Serializable {
         
