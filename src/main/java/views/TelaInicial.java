@@ -132,6 +132,9 @@ public class TelaInicial extends javax.swing.JFrame {
         menuItemUsuario = new javax.swing.JMenuItem();
         menuItemVenda = new javax.swing.JMenuItem();
         menuItemEncomenda = new javax.swing.JMenuItem();
+        menuItemArquivarAuditoria = new javax.swing.JMenuItem();
+        menuItemConsultaCNPJ = new javax.swing.JMenuItem();
+        menuItemExportarProdutos = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menuVendaPeriodoRelatorio = new javax.swing.JMenuItem();
         menuProdutoRelatorio = new javax.swing.JMenuItem();
@@ -589,6 +592,30 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         menuCadastro.add(menuItemEncomenda);
 
+        menuItemArquivarAuditoria.setText("Arquivar Auditoria");
+        menuItemArquivarAuditoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemArquivarAuditoriaActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(menuItemArquivarAuditoria);
+
+        menuItemConsultaCNPJ.setText("Consulta CNPJ");
+        menuItemConsultaCNPJ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemConsultaCNPJActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(menuItemConsultaCNPJ);
+
+        menuItemExportarProdutos.setText("Exportar Produtos");
+        menuItemExportarProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemExportarProdutosActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(menuItemExportarProdutos);
+
         jMenuBar1.add(menuCadastro);
 
         jMenu2.setText("Relatórios");
@@ -808,6 +835,30 @@ public class TelaInicial extends javax.swing.JFrame {
          });
     }//GEN-LAST:event_menuItemPermissoesActionPerformed
 
+    private void menuItemArquivarAuditoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemArquivarAuditoriaActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                 new TelaArquivarAuditoria(new TelaInicial(), true).setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_menuItemArquivarAuditoriaActionPerformed
+
+    private void menuItemConsultaCNPJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemConsultaCNPJActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                 new TelaProdutoFornecedor(new TelaInicial(), true).setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_menuItemConsultaCNPJActionPerformed
+
+    private void menuItemExportarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemExportarProdutosActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                 new TelaExportarProduto(new TelaInicial(), true).setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_menuItemExportarProdutosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -904,9 +955,12 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JLabel labelValorTotalVenda;
     private javax.swing.JLabel labelVendaMessage;
     private javax.swing.JMenu menuCadastro;
+    private javax.swing.JMenuItem menuItemArquivarAuditoria;
     private javax.swing.JMenuItem menuItemCliente;
+    private javax.swing.JMenuItem menuItemConsultaCNPJ;
     private javax.swing.JMenuItem menuItemDiretor;
     private javax.swing.JMenuItem menuItemEncomenda;
+    private javax.swing.JMenuItem menuItemExportarProdutos;
     private javax.swing.JMenuItem menuItemFaixaEtaria;
     private javax.swing.JMenuItem menuItemGenero;
     private javax.swing.JMenuItem menuItemPermissoes;
