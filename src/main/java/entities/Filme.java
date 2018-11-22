@@ -30,6 +30,7 @@ public class Filme implements Serializable {
     private Diretor diretor;
     private Genero genero;
     private FaixaEtaria faixaEtaria;
+    private byte[] poster;
     
     public Filme() {}
 
@@ -131,6 +132,15 @@ public class Filme implements Serializable {
 
     public void setFaixaEtaria(FaixaEtaria faixaEtaria) {
         this.faixaEtaria = faixaEtaria;
+    }
+
+    @Column(name = "tx_poster")
+    public byte[] getPoster() {
+        return poster;
+    }
+
+    public void setPoster(byte[] poster) {
+        this.poster = poster;
     }
     
     
