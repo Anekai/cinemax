@@ -28,5 +28,14 @@ public class Tela implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-    
+
+    @Column(name = "tx_nome")
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
 }

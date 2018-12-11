@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -29,5 +31,27 @@ public class CargoAcaoTela implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
+
+    @JoinColumn(name = "id_cargo")
+    @ManyToOne
+    public Cargo getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
+    }
+
+    @JoinColumn(name = "id_acao_tela")
+    @ManyToOne
+    public AcaoTela getAcaoTela() {
+        return acaoTela;
+    }
+
+    public void setAcaoTela(AcaoTela acaoTela) {
+        this.acaoTela = acaoTela;
+    }
+    
+    
     
 }
