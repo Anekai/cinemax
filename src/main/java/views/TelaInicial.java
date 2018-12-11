@@ -30,36 +30,8 @@ public class TelaInicial extends javax.swing.JFrame {
      */
     public TelaInicial() {
         initComponents();
-        loadFieldsVenda();
-        loadFieldsEncomenda();
-
 
         this.setLocationRelativeTo(null);
-    }
-
-    private void loadFieldsVenda() {
-        
-
-    }
-    
-    private void loadTableVenda() {
-        DefaultTableModel model = (DefaultTableModel) tableItensVenda.getModel();
-        Object rowData[] = new Object[5];
-        model.setRowCount(0);
-        
-        
-    }
-    
-    private void loadFieldsEncomenda() {
-        
-    }
-    
-    private void loadTableEncomenda() {
-        DefaultTableModel model = (DefaultTableModel) tableItensEncomenda.getModel();
-        Object rowData[] = new Object[5];
-        model.setRowCount(0);
-        
-        
     }
 
     /**
@@ -71,53 +43,8 @@ public class TelaInicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        dialogProduto = new javax.swing.JDialog();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        panelVenda = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        comboVendaTipoPagamentoVenda = new javax.swing.JComboBox<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableItensVenda = new javax.swing.JTable();
-        labelValorTotalVenda = new javax.swing.JLabel();
-        buttonAdicionarProdutoVenda = new javax.swing.JButton();
-        buttonRemoverProdutoVenda = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        fieldIdProdutoVenda = new javax.swing.JTextField();
-        fieldNomeProdutoVenda = new javax.swing.JTextField();
-        fieldIdClienteVenda = new javax.swing.JTextField();
-        fieldNomeClienteVenda = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        fieldQuantidadeVenda = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        buttonFinalizarVenda = new javax.swing.JButton();
-        labelVendaMessage = new javax.swing.JLabel();
-        panelEncomenda = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        fieldIdClienteEncomenda = new javax.swing.JTextField();
-        fieldNomeClienteEncomenda = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        labelValorTotalEncomenda = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        jLabel11 = new javax.swing.JLabel();
-        fieldIdProdutoEncomenda = new javax.swing.JTextField();
-        fieldNomeProdutoEncomenda = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        fieldQuantidadeEncomenda = new javax.swing.JTextField();
-        buttonAdicionarProdutoEncomenda = new javax.swing.JButton();
-        buttonRemoverProdutoEncomenda = new javax.swing.JButton();
-        buttonFinalizarEncomenda = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tableItensEncomenda = new javax.swing.JTable();
-        labelEncomendaMessage = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        fieldDataEntregaEncomenda = new javax.swing.JFormattedTextField();
-        jLabel13 = new javax.swing.JLabel();
-        fieldEnderecoEntregaEncomenda = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        cinemax_icon = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCadastro = new javax.swing.JMenu();
         menuItemProduto = new javax.swing.JMenuItem();
@@ -127,369 +54,37 @@ public class TelaInicial extends javax.swing.JFrame {
         menuItemFaixaEtaria = new javax.swing.JMenuItem();
         menuItemTipoProduto = new javax.swing.JMenuItem();
         menuItemPermissoes = new javax.swing.JMenuItem();
-        menuItemCliente = new javax.swing.JMenuItem();
-        menuItemSaldo = new javax.swing.JMenuItem();
-        menuItemUsuario = new javax.swing.JMenuItem();
-        menuItemVenda = new javax.swing.JMenuItem();
-        menuItemEncomenda = new javax.swing.JMenuItem();
         menuItemArquivarAuditoria = new javax.swing.JMenuItem();
         menuItemConsultaCNPJ = new javax.swing.JMenuItem();
         menuItemExportarProdutos = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        menuVendaPeriodoRelatorio = new javax.swing.JMenuItem();
-        menuProdutoRelatorio = new javax.swing.JMenuItem();
-        menuSaldoClienteRelatorio = new javax.swing.JMenuItem();
-        menuMovimentoSaldoRelatorio = new javax.swing.JMenuItem();
-
-        jLabel5.setText("Produto:");
-
-        jLabel6.setText("Quantidade:");
-
-        jButton1.setText("Adicionar");
-
-        javax.swing.GroupLayout dialogProdutoLayout = new javax.swing.GroupLayout(dialogProduto.getContentPane());
-        dialogProduto.getContentPane().setLayout(dialogProdutoLayout);
-        dialogProdutoLayout.setHorizontalGroup(
-            dialogProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dialogProdutoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(dialogProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addGroup(dialogProdutoLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton1))
-                .addContainerGap(168, Short.MAX_VALUE))
-        );
-        dialogProdutoLayout.setVerticalGroup(
-            dialogProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dialogProdutoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(dialogProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(203, Short.MAX_VALUE))
-        );
+        menuItemBackup = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Doce Amanhecer");
+        setTitle("Cinemax");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        panelVenda.setBorder(javax.swing.BorderFactory.createTitledBorder("Vendas"));
+        cinemax_icon.setIcon(new javax.swing.ImageIcon("C:\\Users\\alexa\\Documents\\GitHub\\cinemax\\src\\main\\resources\\images\\cinemax_icon.png")); // NOI18N
 
-        jLabel1.setText("*Cliente:");
-
-        jLabel2.setText("*Tipo de Pagamento:");
-
-        jLabel3.setText("Valor Total:");
-
-        tableItensVenda.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Produto", "Preço", "Quantidade"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(tableItensVenda);
-
-        labelValorTotalVenda.setText("R$ 0,00");
-
-        buttonAdicionarProdutoVenda.setText("Adicionar Produto");
-        buttonAdicionarProdutoVenda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAdicionarProdutoVendaActionPerformed(evt);
-            }
-        });
-
-        buttonRemoverProdutoVenda.setText("Remover Produto");
-        buttonRemoverProdutoVenda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRemoverProdutoVendaActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setText("*Produto:");
-
-        fieldNomeClienteVenda.setEditable(false);
-
-        jLabel4.setText("*Quantidade:");
-
-        buttonFinalizarVenda.setText("Finalizar Venda");
-        buttonFinalizarVenda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonFinalizarVendaActionPerformed(evt);
-            }
-        });
-
-        labelVendaMessage.setForeground(new java.awt.Color(216, 176, 26));
-        labelVendaMessage.setText("            ");
-
-        javax.swing.GroupLayout panelVendaLayout = new javax.swing.GroupLayout(panelVenda);
-        panelVenda.setLayout(panelVendaLayout);
-        panelVendaLayout.setHorizontalGroup(
-            panelVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(panelVendaLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelVendaLayout.createSequentialGroup()
-                        .addGroup(panelVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(labelValorTotalVenda)
-                            .addGroup(panelVendaLayout.createSequentialGroup()
-                                .addComponent(fieldIdClienteVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fieldNomeClienteVenda))
-                            .addComponent(comboVendaTipoPagamentoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(panelVendaLayout.createSequentialGroup()
-                        .addComponent(buttonAdicionarProdutoVenda)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonRemoverProdutoVenda)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonFinalizarVenda))
-                    .addGroup(panelVendaLayout.createSequentialGroup()
-                        .addGroup(panelVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fieldQuantidadeVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelVendaLayout.createSequentialGroup()
-                                .addComponent(fieldIdProdutoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fieldNomeProdutoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(labelVendaMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addComponent(cinemax_icon)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        panelVendaLayout.setVerticalGroup(
-            panelVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelVendaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(fieldIdClienteVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldNomeClienteVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(comboVendaTipoPagamentoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(labelValorTotalVenda))
-                .addGap(18, 18, 18)
-                .addComponent(labelVendaMessage)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(panelVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(fieldIdProdutoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldNomeProdutoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(fieldQuantidadeVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonAdicionarProdutoVenda)
-                    .addComponent(buttonRemoverProdutoVenda)
-                    .addComponent(buttonFinalizarVenda))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        panelEncomenda.setBorder(javax.swing.BorderFactory.createTitledBorder("Encomenda"));
-
-        jLabel8.setText("*Cliente:");
-
-        fieldNomeClienteEncomenda.setEditable(false);
-
-        jLabel10.setText("Valor Total:");
-
-        labelValorTotalEncomenda.setText("R$ 0,00");
-
-        jLabel11.setText("*Produto:");
-
-        jLabel12.setText("*Quantidade:");
-
-        buttonAdicionarProdutoEncomenda.setText("Adicionar Produto");
-        buttonAdicionarProdutoEncomenda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAdicionarProdutoEncomendaActionPerformed(evt);
-            }
-        });
-
-        buttonRemoverProdutoEncomenda.setText("Remover Produto");
-        buttonRemoverProdutoEncomenda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRemoverProdutoEncomendaActionPerformed(evt);
-            }
-        });
-
-        buttonFinalizarEncomenda.setText("Finalizar Encomenda");
-        buttonFinalizarEncomenda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonFinalizarEncomendaActionPerformed(evt);
-            }
-        });
-
-        tableItensEncomenda.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Produto", "Preço", "Quantidade"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(tableItensEncomenda);
-
-        labelEncomendaMessage.setForeground(new java.awt.Color(216, 176, 26));
-        labelEncomendaMessage.setText("            ");
-
-        jLabel9.setText("*Data Entrega:");
-
-        fieldDataEntregaEncomenda.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm"))));
-
-        jLabel13.setText("*Endereço Entrega:");
-
-        javax.swing.GroupLayout panelEncomendaLayout = new javax.swing.GroupLayout(panelEncomenda);
-        panelEncomenda.setLayout(panelEncomendaLayout);
-        panelEncomendaLayout.setHorizontalGroup(
-            panelEncomendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator2)
-            .addGroup(panelEncomendaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelEncomendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelEncomendaMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelEncomendaLayout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(26, 26, 26)
-                        .addGroup(panelEncomendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelEncomendaLayout.createSequentialGroup()
-                                .addComponent(fieldIdClienteEncomenda, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fieldNomeClienteEncomenda))
-                            .addComponent(fieldDataEntregaEncomenda, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelEncomendaLayout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fieldEnderecoEntregaEncomenda))
-                    .addGroup(panelEncomendaLayout.createSequentialGroup()
-                        .addGroup(panelEncomendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelEncomendaLayout.createSequentialGroup()
-                                .addComponent(buttonAdicionarProdutoEncomenda)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buttonRemoverProdutoEncomenda)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buttonFinalizarEncomenda))
-                            .addGroup(panelEncomendaLayout.createSequentialGroup()
-                                .addGroup(panelEncomendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel12)
-                                    .addComponent(jLabel11))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(panelEncomendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(fieldQuantidadeEncomenda, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(panelEncomendaLayout.createSequentialGroup()
-                                        .addComponent(fieldIdProdutoEncomenda, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(fieldNomeProdutoEncomenda, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jLabel8)
-                            .addGroup(panelEncomendaLayout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelValorTotalEncomenda)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        panelEncomendaLayout.setVerticalGroup(
-            panelEncomendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelEncomendaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelEncomendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(fieldIdClienteEncomenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldNomeClienteEncomenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelEncomendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(fieldDataEntregaEncomenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelEncomendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(fieldEnderecoEntregaEncomenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelEncomendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(labelValorTotalEncomenda))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelEncomendaMessage)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(panelEncomendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(fieldIdProdutoEncomenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fieldNomeProdutoEncomenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelEncomendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(fieldQuantidadeEncomenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(panelEncomendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonAdicionarProdutoEncomenda)
-                    .addComponent(buttonRemoverProdutoEncomenda)
-                    .addComponent(buttonFinalizarEncomenda))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(cinemax_icon)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         menuCadastro.setText("Cadastros");
 
+        menuItemProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK));
         menuItemProduto.setText("Produtos");
         menuItemProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -543,7 +138,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         menuCadastro.add(menuItemTipoProduto);
 
-        menuItemPermissoes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.ALT_MASK));
+        menuItemPermissoes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.ALT_MASK));
         menuItemPermissoes.setText("Permissões");
         menuItemPermissoes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -552,46 +147,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         menuCadastro.add(menuItemPermissoes);
 
-        menuItemCliente.setText("Cliente");
-        menuItemCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemClienteActionPerformed(evt);
-            }
-        });
-        menuCadastro.add(menuItemCliente);
-
-        menuItemSaldo.setText("Saldo");
-        menuItemSaldo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemSaldoActionPerformed(evt);
-            }
-        });
-        menuCadastro.add(menuItemSaldo);
-
-        menuItemUsuario.setText("Usuário");
-        menuItemUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemUsuarioActionPerformed(evt);
-            }
-        });
-        menuCadastro.add(menuItemUsuario);
-
-        menuItemVenda.setText("Venda");
-        menuItemVenda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemVendaActionPerformed(evt);
-            }
-        });
-        menuCadastro.add(menuItemVenda);
-
-        menuItemEncomenda.setText("Encomenda");
-        menuItemEncomenda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuItemEncomendaActionPerformed(evt);
-            }
-        });
-        menuCadastro.add(menuItemEncomenda);
-
+        menuItemArquivarAuditoria.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK));
         menuItemArquivarAuditoria.setText("Arquivar Auditoria");
         menuItemArquivarAuditoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -600,6 +156,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         menuCadastro.add(menuItemArquivarAuditoria);
 
+        menuItemConsultaCNPJ.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.ALT_MASK));
         menuItemConsultaCNPJ.setText("Consulta CNPJ");
         menuItemConsultaCNPJ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -608,6 +165,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         menuCadastro.add(menuItemConsultaCNPJ);
 
+        menuItemExportarProdutos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.ALT_MASK));
         menuItemExportarProdutos.setText("Exportar Produtos");
         menuItemExportarProdutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -616,43 +174,16 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         menuCadastro.add(menuItemExportarProdutos);
 
+        menuItemBackup.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.ALT_MASK));
+        menuItemBackup.setText("Backup");
+        menuItemBackup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemBackupActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(menuItemBackup);
+
         jMenuBar1.add(menuCadastro);
-
-        jMenu2.setText("Relatórios");
-
-        menuVendaPeriodoRelatorio.setText("Vendas por Período");
-        menuVendaPeriodoRelatorio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuVendaPeriodoRelatorioActionPerformed(evt);
-            }
-        });
-        jMenu2.add(menuVendaPeriodoRelatorio);
-
-        menuProdutoRelatorio.setText("Produtos");
-        menuProdutoRelatorio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuProdutoRelatorioActionPerformed(evt);
-            }
-        });
-        jMenu2.add(menuProdutoRelatorio);
-
-        menuSaldoClienteRelatorio.setText("Saldo de Clientes");
-        menuSaldoClienteRelatorio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuSaldoClienteRelatorioActionPerformed(evt);
-            }
-        });
-        jMenu2.add(menuSaldoClienteRelatorio);
-
-        menuMovimentoSaldoRelatorio.setText("Movimento de Saldo");
-        menuMovimentoSaldoRelatorio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuMovimentoSaldoRelatorioActionPerformed(evt);
-            }
-        });
-        jMenu2.add(menuMovimentoSaldoRelatorio);
-
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -662,19 +193,15 @@ public class TelaInicial extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panelVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelEncomenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelEncomenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -695,97 +222,6 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
     }//GEN-LAST:event_menuItemTipoProdutoActionPerformed
-
-    private void menuVendaPeriodoRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuVendaPeriodoRelatorioActionPerformed
-        
-    }//GEN-LAST:event_menuVendaPeriodoRelatorioActionPerformed
-
-    private void buttonAdicionarProdutoVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarProdutoVendaActionPerformed
-        
-    }//GEN-LAST:event_buttonAdicionarProdutoVendaActionPerformed
-
-    private void buttonFinalizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFinalizarVendaActionPerformed
-        
-    }//GEN-LAST:event_buttonFinalizarVendaActionPerformed
-
-    private void buttonRemoverProdutoVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRemoverProdutoVendaActionPerformed
-        
-    }//GEN-LAST:event_buttonRemoverProdutoVendaActionPerformed
-
-    private void menuSaldoClienteRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSaldoClienteRelatorioActionPerformed
-        
-    }//GEN-LAST:event_menuSaldoClienteRelatorioActionPerformed
-
-    private void menuMovimentoSaldoRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuMovimentoSaldoRelatorioActionPerformed
-        
-    }//GEN-LAST:event_menuMovimentoSaldoRelatorioActionPerformed
-
-    private void menuProdutoRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuProdutoRelatorioActionPerformed
-        
-    }//GEN-LAST:event_menuProdutoRelatorioActionPerformed
-
-    private void menuItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemClienteActionPerformed
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                
-            }
-        });
-    }//GEN-LAST:event_menuItemClienteActionPerformed
-
-    private void buttonAdicionarProdutoEncomendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarProdutoEncomendaActionPerformed
-        
-    }//GEN-LAST:event_buttonAdicionarProdutoEncomendaActionPerformed
-
-    private void buttonRemoverProdutoEncomendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRemoverProdutoEncomendaActionPerformed
-        
-    }//GEN-LAST:event_buttonRemoverProdutoEncomendaActionPerformed
-
-    private void buttonFinalizarEncomendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFinalizarEncomendaActionPerformed
-        
-        
-        fieldIdClienteEncomenda.setText("");
-        fieldNomeClienteEncomenda.setText("");
-        fieldDataEntregaEncomenda.setText("");
-        labelValorTotalEncomenda.setText("R$ 0,00");
-        fieldIdProdutoEncomenda.setText("");
-        fieldNomeProdutoEncomenda.setText("");
-        fieldQuantidadeEncomenda.setText("");
-        fieldEnderecoEntregaEncomenda.setText("");
-        labelEncomendaMessage.setText("Encomenda Finalizada!");
-        loadTableEncomenda();
-    }//GEN-LAST:event_buttonFinalizarEncomendaActionPerformed
-
-    private void menuItemSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSaldoActionPerformed
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                
-            }
-        });
-    }//GEN-LAST:event_menuItemSaldoActionPerformed
-
-    private void menuItemUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemUsuarioActionPerformed
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                
-            }
-        });
-    }//GEN-LAST:event_menuItemUsuarioActionPerformed
-
-    private void menuItemVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemVendaActionPerformed
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                
-            }
-        });
-    }//GEN-LAST:event_menuItemVendaActionPerformed
-
-    private void menuItemEncomendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemEncomendaActionPerformed
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                
-            }
-        });
-    }//GEN-LAST:event_menuItemEncomendaActionPerformed
 
     private void menuItemGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemGeneroActionPerformed
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -859,6 +295,14 @@ public class TelaInicial extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_menuItemExportarProdutosActionPerformed
 
+    private void menuItemBackupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemBackupActionPerformed
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                 new TelaBackup(new TelaInicial(), true).setVisible(true);
+            }
+        });
+    }//GEN-LAST:event_menuItemBackupActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -909,74 +353,20 @@ public class TelaInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonAdicionarProdutoEncomenda;
-    private javax.swing.JButton buttonAdicionarProdutoVenda;
-    private javax.swing.JButton buttonFinalizarEncomenda;
-    private javax.swing.JButton buttonFinalizarVenda;
-    private javax.swing.JButton buttonRemoverProdutoEncomenda;
-    private javax.swing.JButton buttonRemoverProdutoVenda;
-    private javax.swing.JComboBox<String> comboVendaTipoPagamentoVenda;
-    private javax.swing.JDialog dialogProduto;
-    private javax.swing.JFormattedTextField fieldDataEntregaEncomenda;
-    private javax.swing.JTextField fieldEnderecoEntregaEncomenda;
-    private javax.swing.JTextField fieldIdClienteEncomenda;
-    private javax.swing.JTextField fieldIdClienteVenda;
-    private javax.swing.JTextField fieldIdProdutoEncomenda;
-    private javax.swing.JTextField fieldIdProdutoVenda;
-    private javax.swing.JTextField fieldNomeClienteEncomenda;
-    private javax.swing.JTextField fieldNomeClienteVenda;
-    private javax.swing.JTextField fieldNomeProdutoEncomenda;
-    private javax.swing.JTextField fieldNomeProdutoVenda;
-    private javax.swing.JTextField fieldQuantidadeEncomenda;
-    private javax.swing.JTextField fieldQuantidadeVenda;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JLabel cinemax_icon;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel labelEncomendaMessage;
-    private javax.swing.JLabel labelValorTotalEncomenda;
-    private javax.swing.JLabel labelValorTotalVenda;
-    private javax.swing.JLabel labelVendaMessage;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JMenu menuCadastro;
     private javax.swing.JMenuItem menuItemArquivarAuditoria;
-    private javax.swing.JMenuItem menuItemCliente;
+    private javax.swing.JMenuItem menuItemBackup;
     private javax.swing.JMenuItem menuItemConsultaCNPJ;
     private javax.swing.JMenuItem menuItemDiretor;
-    private javax.swing.JMenuItem menuItemEncomenda;
     private javax.swing.JMenuItem menuItemExportarProdutos;
     private javax.swing.JMenuItem menuItemFaixaEtaria;
     private javax.swing.JMenuItem menuItemGenero;
     private javax.swing.JMenuItem menuItemPermissoes;
     private javax.swing.JMenuItem menuItemProduto;
     private javax.swing.JMenuItem menuItemSala;
-    private javax.swing.JMenuItem menuItemSaldo;
     private javax.swing.JMenuItem menuItemTipoProduto;
-    private javax.swing.JMenuItem menuItemUsuario;
-    private javax.swing.JMenuItem menuItemVenda;
-    private javax.swing.JMenuItem menuMovimentoSaldoRelatorio;
-    private javax.swing.JMenuItem menuProdutoRelatorio;
-    private javax.swing.JMenuItem menuSaldoClienteRelatorio;
-    private javax.swing.JMenuItem menuVendaPeriodoRelatorio;
-    private javax.swing.JPanel panelEncomenda;
-    private javax.swing.JPanel panelVenda;
-    private javax.swing.JTable tableItensEncomenda;
-    private javax.swing.JTable tableItensVenda;
     // End of variables declaration//GEN-END:variables
 }

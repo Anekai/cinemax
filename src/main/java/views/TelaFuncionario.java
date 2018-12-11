@@ -240,7 +240,7 @@ public class TelaFuncionario extends javax.swing.JDialog {
         );
 
         dialogUpdate.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        dialogUpdate.setTitle("Atualizar Produto");
+        dialogUpdate.setTitle("Atualizar Funcioário");
         dialogUpdate.setModal(true);
         dialogUpdate.setResizable(false);
         dialogUpdate.setSize(new java.awt.Dimension(300, 300));

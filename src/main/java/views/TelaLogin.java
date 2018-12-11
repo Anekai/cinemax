@@ -5,12 +5,26 @@
  */
 package views;
 
+import com.ibm.icu.util.Calendar;
 import configuration.ParamConfig;
 import entities.Funcionario;
 import configuration.SpringConfig;
+import framework.Decriptador;
+import java.io.File;
+import java.io.IOException;
+import java.security.Key;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.concurrent.TimeUnit;
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.io.FileUtils;
 import services.FuncionarioService;
+import services.ProdutoService;
 
 /**
  *
@@ -22,12 +36,77 @@ public class TelaLogin extends javax.swing.JFrame {
 
     public TelaLogin() {
         initComponents();
-        SpringConfig.context.getBean(FuncionarioService.class).find();
+        SpringConfig.context.getBean(ProdutoService.class).find();
         this.setLocationRelativeTo(null);
+        
+        verificarValidade();
     }
     
     public Funcionario getFuncionarioLogado() {
         return funcionarioLogado;
+    }
+    
+    public boolean verificarValidade() {
+        String codigo = null;
+        
+        labelValidade.setText("");
+        
+        try {
+            codigo = FileUtils.readFileToString(new File("C:\\Users\\alexa\\Desktop\\licenca-cinemax.txt"));
+        } catch (IOException e) {
+            labelValidade.setText("Arquivo de licença não encontrado!");
+            
+            return false;
+        }
+        
+        String key = "Bar12345Bar12345"; // 128 bit key
+        String initVector = "RandomInitVector";
+        String decrypted = null;
+        
+        
+        
+        try {
+            decrypted = Decriptador.decrypt(key, initVector, codigo);
+        } catch (Exception e) {
+            e.printStackTrace();
+            
+            labelValidade.setText("Arquivo de licença inválido!");
+            
+            return false;
+        }
+
+        Calendar validade = Calendar.getInstance();
+        
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
+            validade.setTime(sdf.parse(decrypted));
+	} catch (ParseException e) {
+            labelValidade.setText("Arquivo de licença inválido!");
+            
+            return false;
+	}
+        
+        Calendar data = Calendar.getInstance();
+        
+        data.set(Calendar.HOUR, 0);
+        data.set(Calendar.MINUTE, 0);
+        data.set(Calendar.SECOND, 0);
+        
+        if ( validade.before(data) ) {
+            labelValidade.setText("Licença expirada!");
+            
+            return false;
+        }
+        
+        long diff = validade.getTimeInMillis() - data.getTimeInMillis();
+        
+        Long dias = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+        
+        if ( dias <= 5 ) {
+            labelValidade.setText("Prazo de validade do sistema irá expirar em " + ( dias + 1 ) + " dia(s)!");
+        }
+        
+        return true;
     }
 
     /**
@@ -46,11 +125,13 @@ public class TelaLogin extends javax.swing.JFrame {
         buttonLogin = new javax.swing.JButton();
         fieldSenha = new javax.swing.JPasswordField();
         labelLoginErro = new javax.swing.JLabel();
+        labelValidade = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Doce Amanhecer");
+        setTitle("Cinemax");
 
         panelLogin.setBorder(javax.swing.BorderFactory.createTitledBorder("Entre"));
+        panelLogin.setPreferredSize(new java.awt.Dimension(400, 180));
 
         labelLogin.setText("Login:");
 
@@ -64,6 +145,10 @@ public class TelaLogin extends javax.swing.JFrame {
         });
 
         labelLoginErro.setForeground(java.awt.Color.red);
+        labelLoginErro.setText("          ");
+
+        labelValidade.setForeground(java.awt.Color.red);
+        labelValidade.setText("             ");
 
         javax.swing.GroupLayout panelLoginLayout = new javax.swing.GroupLayout(panelLogin);
         panelLogin.setLayout(panelLoginLayout);
@@ -85,13 +170,18 @@ public class TelaLogin extends javax.swing.JFrame {
                             .addComponent(fieldLogin)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLoginLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(buttonLogin)))
+                        .addComponent(buttonLogin))
+                    .addGroup(panelLoginLayout.createSequentialGroup()
+                        .addComponent(labelValidade)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelLoginLayout.setVerticalGroup(
             panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLoginLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addContainerGap()
+                .addComponent(labelValidade)
+                .addGap(18, 18, 18)
                 .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelLogin)
                     .addComponent(fieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -114,7 +204,7 @@ public class TelaLogin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
         );
 
         pack();
@@ -123,30 +213,32 @@ public class TelaLogin extends javax.swing.JFrame {
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
         buttonLogin.setEnabled(false);
         
-        if ( fieldLogin.getText().equals("") || fieldSenha.getPassword().length < 1 ) {
-            labelLoginErro.setText("Informe login e senha");
-            labelLoginErro.setVisible(true);
-        } else {
-            FuncionarioService usuarioService = SpringConfig.context.getBean(FuncionarioService.class);
-            String senha = new String(fieldSenha.getPassword());
-            try {
-                // Create MessageDigest instance for MD5
-                MessageDigest md = MessageDigest.getInstance("MD5");
-                //Add password bytes to digest
-                md.update(senha.getBytes());
-                //Get the hash's bytes
-                byte[] bytes = md.digest();
-                //This bytes[] has bytes in decimal format;
-                //Convert it to hexadecimal format
-                StringBuilder sb = new StringBuilder();
-                for(int i=0; i< bytes.length ;i++) {
-                    sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+        if ( verificarValidade() ) {
+            if ( fieldLogin.getText().equals("") || fieldSenha.getPassword().length < 1 ) {
+                labelLoginErro.setText("Informe login e senha");
+                labelLoginErro.setVisible(true);
+            } else {
+                FuncionarioService usuarioService = SpringConfig.context.getBean(FuncionarioService.class);
+                String senha = new String(fieldSenha.getPassword());
+
+                try {
+                    // Create MessageDigest instance for MD5
+                    MessageDigest md = MessageDigest.getInstance("MD5");
+                    //Add password bytes to digest
+                    md.update(senha.getBytes());
+                    //Get the hash's bytes
+                    byte[] bytes = md.digest();
+                    //This bytes[] has bytes in decimal format;
+                    //Convert it to hexadecimal format
+                    StringBuilder sb = new StringBuilder();
+                    for(int i=0; i< bytes.length ;i++) {
+                        sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+                    }
+                    //Get complete hashed password in hex format
+                    senha = sb.toString();
+                } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
                 }
-                //Get complete hashed password in hex format
-                senha = sb.toString();
-            } catch (NoSuchAlgorithmException e) {
-                e.printStackTrace();
-            }
             
 //            funcionarioLogado = usuarioService.findById(3);
             
@@ -154,23 +246,24 @@ public class TelaLogin extends javax.swing.JFrame {
             
 //            usuarioService.update(funcionarioLogado);
             
-            funcionarioLogado = usuarioService.loginUsuario(fieldLogin.getText(), senha);
+                funcionarioLogado = usuarioService.loginUsuario(fieldLogin.getText(), senha);
             
-            if ( funcionarioLogado != null ){
-                labelLoginErro.setText("");
-                labelLoginErro.setVisible(false);
+                if ( funcionarioLogado != null ){
+                    labelLoginErro.setText("");
+                    labelLoginErro.setVisible(false);
                 
-                ParamConfig config = new ParamConfig(funcionarioLogado);
-                
-                java.awt.EventQueue.invokeLater(new Runnable() {
-                    public void run() {
-                        TelaLogin.this.setVisible(false);
-                        new TelaInicial().setVisible(true);
-                    }
-                });
-            } else {
-                labelLoginErro.setText("Usuário ou senha incorretos.");
-                labelLoginErro.setVisible(true);
+                    ParamConfig config = new ParamConfig(funcionarioLogado);
+
+                    java.awt.EventQueue.invokeLater(new Runnable() {
+                        public void run() {
+                            TelaLogin.this.setVisible(false);
+                            new TelaInicial().setVisible(true);
+                        }
+                    });
+                } else {
+                    labelLoginErro.setText("Usuário ou senha incorretos.");
+                    labelLoginErro.setVisible(true);
+                }
             }
         }
         
@@ -222,6 +315,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel labelLogin;
     private javax.swing.JLabel labelLoginErro;
     private javax.swing.JLabel labelSenha;
+    private javax.swing.JLabel labelValidade;
     private javax.swing.JPanel panelLogin;
     // End of variables declaration//GEN-END:variables
 }

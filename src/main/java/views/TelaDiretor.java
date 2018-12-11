@@ -108,7 +108,7 @@ public class TelaDiretor extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
 
         dialogInsert.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        dialogInsert.setTitle("Cadastrar Produto");
+        dialogInsert.setTitle("Cadastrar Diretor");
         dialogInsert.setModal(true);
         dialogInsert.setResizable(false);
         dialogInsert.setSize(new java.awt.Dimension(360, 200));
@@ -153,7 +153,7 @@ public class TelaDiretor extends javax.swing.JDialog {
         );
 
         dialogUpdate.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        dialogUpdate.setTitle("Atualizar Produto");
+        dialogUpdate.setTitle("Atualizar Diretor");
         dialogUpdate.setModal(true);
         dialogUpdate.setResizable(false);
         dialogUpdate.setSize(new java.awt.Dimension(300, 300));

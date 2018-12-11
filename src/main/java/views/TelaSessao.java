@@ -122,7 +122,7 @@ public class TelaSessao extends javax.swing.JDialog {
         formatedFieldSearchPreco = new javax.swing.JFormattedTextField();
 
         dialogInsert.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        dialogInsert.setTitle("Cadastrar Produto");
+        dialogInsert.setTitle("Cadastrar Sessão");
         dialogInsert.setModal(true);
         dialogInsert.setResizable(false);
         dialogInsert.setSize(new java.awt.Dimension(360, 200));
@@ -177,7 +177,7 @@ public class TelaSessao extends javax.swing.JDialog {
         );
 
         dialogUpdate.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        dialogUpdate.setTitle("Atualizar Produto");
+        dialogUpdate.setTitle("Atualizar Sessão");
         dialogUpdate.setModal(true);
         dialogUpdate.setResizable(false);
         dialogUpdate.setSize(new java.awt.Dimension(300, 300));
@@ -256,7 +256,7 @@ public class TelaSessao extends javax.swing.JDialog {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("CINEMAX");
+        setTitle("Cadastro de Sessões");
 
         buttonPesquisar.setText("Pesquisar");
         buttonPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -384,7 +384,7 @@ public class TelaSessao extends javax.swing.JDialog {
                     .addComponent(buttonEditar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -444,8 +444,8 @@ public class TelaSessao extends javax.swing.JDialog {
 
                 SimpleDateFormat f = new SimpleDateFormat("hh:mm");
 
-                entity.setHorario(f.format(formatedFieldInsertHorario));
-                entity.setPreco(String.valueOf(entity.getPreco()));
+                //entity.setHorario(f.format(formatedFieldInsertHorario));
+                //entity.setPreco(String.valueOf(entity.getPreco()));
                 entity.setAtivo(SimNaoType.SIM);
 
                 SessaoService service = SpringConfig.context.getBean(SessaoService.class);
@@ -467,8 +467,8 @@ public class TelaSessao extends javax.swing.JDialog {
 
                 SimpleDateFormat f = new SimpleDateFormat("hh:mm");
 
-                entity.setHorario(f.format(formatedFieldInsertHorario));
-                entity.setPreco(String.valueOf(entity.getPreco()));
+                //entity.setHorario(f.format(formatedFieldInsertHorario));
+                //entity.setPreco(String.valueOf(entity.getPreco()));
                 entity.setAtivo(Arrays.asList(SimNaoType.values()).get(comboUpdateAtivo.getSelectedIndex()));
 
                 SessaoService service = SpringConfig.context.getBean(SessaoService.class);

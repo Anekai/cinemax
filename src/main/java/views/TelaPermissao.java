@@ -186,7 +186,7 @@ public class TelaPermissao extends javax.swing.JDialog {
         comboSearchVisualizar = new javax.swing.JComboBox<>();
 
         dialogInsert.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        dialogInsert.setTitle("Cadastrar Produto");
+        dialogInsert.setTitle("Cadastrar Permissão");
         dialogInsert.setModal(true);
         dialogInsert.setResizable(false);
         dialogInsert.setSize(new java.awt.Dimension(360, 270));
@@ -291,7 +291,7 @@ public class TelaPermissao extends javax.swing.JDialog {
         );
 
         dialogUpdate.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        dialogUpdate.setTitle("Atualizar Produto");
+        dialogUpdate.setTitle("Atualizar Permissão");
         dialogUpdate.setModal(true);
         dialogUpdate.setResizable(false);
         dialogUpdate.setSize(new java.awt.Dimension(360, 270));
@@ -404,7 +404,7 @@ public class TelaPermissao extends javax.swing.JDialog {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("CINEMAX");
+        setTitle("Cadastro de Permissões");
 
         buttonPesquisar.setText("Pesquisar");
         buttonPesquisar.addActionListener(new java.awt.event.ActionListener() {

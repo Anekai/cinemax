@@ -1,6 +1,7 @@
 
 package views;
 
+import configuration.ParamConfig;
 import configuration.SpringConfig;
 import entities.Produto;
 import java.math.BigDecimal;
@@ -50,6 +51,9 @@ public class TelaProduto extends javax.swing.JDialog {
         populateTable(service.find(entitySearch));
         
         entitySearch = new Produto();
+        ParamConfig config = new ParamConfig();
+        
+        System.out.println(config.getFuncionarioLogado().getNome());
     }
     
     private void populateTable(List<Produto> list) {
